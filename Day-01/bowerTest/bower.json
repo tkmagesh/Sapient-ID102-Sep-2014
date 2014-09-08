@@ -1,0 +1,29 @@
+{
+  "name": "Day-01",
+  "version": "0.1.0",
+  "authors": [
+    "tkmagesh <tkmagesh77@gmail.com>"
+  ],
+  "description": "a demo app for bower",
+  "main": "index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "bower",
+    "demo"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "backbone": "~1.1.2"
+  }
+}

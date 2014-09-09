@@ -25,17 +25,38 @@
 	}
 	</style>
 	<script src="jquery-2.1.1.js"></script>
+	<script src="handlebars-v2.0.0.js"></script>
+
+	<script id="taskTemplate" type="text/text-template">
+		<li  
+		   {{#if isCompleted}} 
+		   		class="completed"
+		   	{{/if}}>
+		   	{{taskName}}</li>
+	</script>
+
 	<script>
+	var source, template;
 
 	$(function init(){
 		$("#btnAdd").on("click",onBtnAddClick);
 		$("#btnRemoveCompleted").click(onBtnRemoveCompletedClick);
 		$("#taskList").on("click","li",onTaskItemClick);
+
+		source = $("#taskTemplate").html();
+		template = Handlebars.compile(source);
 	});
 
 	function onBtnAddClick(){
-		$("<li></li>")
-			.text($("#txtTask").val())
+		
+		var taskName = $("#txtTask").val();
+		var isCompleted = $("#chkCompleted").prop("checked");
+		var data = {taskName : taskName, isCompleted : isCompleted};
+		var taskItem = template(data);
+
+
+		$(taskItem)
+			//.addClass(isCompleted ? "completed" : "")
 			.prependTo("#taskList")
 			.hide()
 			.slideDown(400);
@@ -71,6 +92,7 @@
 	<h1>Task Manager</h1>
 	<label for="txtTask">Task :</label>
 	<input type="text" name="" id="txtTask">
+	<span>Completed? :</span><input type="checkbox" name="" id="chkCompleted">
 	<input type="button" value="Add Task" id="btnAdd">
 	<input type="button" value="Remove Completed" id="btnRemoveCompleted">
 	<ol id="taskList">

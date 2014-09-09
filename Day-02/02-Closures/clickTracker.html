@@ -1,0 +1,28 @@
+<!-- Create a page that tracks and displays the number of times a button is clicked -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Click Tracker</title>
+	<script>
+	(function(){
+		var counter = 0;
+		window.addEventListener("DOMContentLoaded",init);
+		function init(){
+			document.getElementById("btnTrack").addEventListener("click", onBtnTrackClick);
+		}
+		function onBtnTrackClick(){
+			++counter;
+			displayCounter(counter);
+		}
+		function displayCounter(counter){
+			document.getElementById("divMessage").innerHTML = counter;
+		}
+	})();
+	</script>
+</head>
+<body>
+	<input type="button" value="Track" id="btnTrack">
+	<div id="divMessage"></div>
+</body>
+</html>

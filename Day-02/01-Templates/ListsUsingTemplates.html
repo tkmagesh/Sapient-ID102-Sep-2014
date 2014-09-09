@@ -6,9 +6,28 @@
 	<script src="jquery-2.1.1.js"></script>
 	<script src="handlebars-v2.0.0.js"></script>
 	<script>
-	var products = [{name : 'Pen'}, {name :'Pencil'}, {name :'Notebook'}, {name :'Marker'}];
+	var products = {
+		list : [{name : 'Pen'}, {name :'Pencil'}, {name :'Notebook'}, {name :'Marker'}]
+	};
 
+	var template;
+	$(function(){
+
+		$.get("productsList.tmpl", function(response){
+			var source = response;
+			template = Handlebars.compile(source);
+		},"html");
+		
+		$("#btnLoadProducts").click(onBtnLoadProductsClick);
+	})
+	function onBtnLoadProductsClick(){
+		var html = template(products);
+		$("#productList").append(html);
+	}
 	</script>
+	
+	
+
 </head>
 <body>
 	<input type="button" value="Load Products" id="btnLoadProducts">

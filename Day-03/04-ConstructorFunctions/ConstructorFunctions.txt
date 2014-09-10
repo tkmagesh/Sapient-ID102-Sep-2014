@@ -1,0 +1,44 @@
+Constructor Functions
+
+1. A constructor function is invoked with "new" keyword
+2. "this" refers to a new object
+3. "this" is returned by default
+
+Create a Constructor function to create "Product" objects. The product object expected to exhibit the following characteristics
+
+Attributes
+	id
+	name
+	unitCost
+	discountPercentage
+Methods
+	getValue() -> should return the actula value of the product (unitCost - discount)
+
+Usage:
+======
+var p = new Product(1,"Pen",100,10);
+p.getValue() //=> 90
+
+Solution:
+=========
+
+function Product(id,name,unitCost,discountPercent){
+	this.id = id;
+	this.name = name;
+	this.unitCost = unitCost;
+	this.discountPercent = discountPercent;
+	this.getValue = function(){
+		return this.unitCost * ((100 - this.discountPercent)/100)
+	}
+}
+
+Assignment:
+===========
+convert id, name, unitCost & discountPercent into accessor methods so that the following validations can be performed when the values are assigned to the attributes
+
+Validations:
+-------------
+	id -> should be > 0
+	name -> should NOT be an empty string
+	unitCost -> should be > 0
+	discountPercent -> should be > 0 and < 100

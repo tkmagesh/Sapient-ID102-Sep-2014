@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<style type="text/css">
+		.completed {
+			text-decoration: line-through;
+			font-style: italic;
+			font-weight: bold;
+			color : red;
+		}
+	</style>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="scripts/handlebars-v2.0.0.js"></script>
+	<script type="text/javascript">
+	/*Model - Task*/
+	function Task(id,taskName,isCompleted){
+		this.id = id;
+		this.name = taskName;
+		this.isCompleted = isCompleted || false;
+		this.toggleCompletion = function(){
+			this.isCompleted = !this.isCompleted;
+		}
+	}
+
+	/*Model - TaskCollection*/
+	function TaskCollection(){
+		var counter = 0;
+		var tasks = [];
+
+		this.add = function(taskName, isCompleted){
+			var task = new Task(++counter, taskName, isCompleted);
+			tasks.push(task);
+		};
+		this.get = function(taskId){
+			for(var i=0;i<tasks.length;i++)
+				if (tasks[i].id === taskId)
+					return tasks[i];
+		};
+
+		this.length = function(){
+			return tasks.length;
+		};
+		this.remove = function(taskId){
+			for(var i=tasks.length-1;i>=0;i--)
+				if (tasks[i].id === taskId)
+					tasks.splice(i,1);
+		};
+		this.removeCompleted = function(){
+			for(var i=tasks.length-1;i>=0;i--)
+				if (tasks[i].isCompleted)
+					tasks.splice(i,1);	
+		};
+		this.getAll = function(){
+			return tasks.slice();	
+		}
+	}
+
+	$(function(){
+		window.taskCollection = new TaskCollection();
+		var template = Handlebars.compile($("#taskListTemplate").html());
+
+		$("#btnAddTask").click(function(){
+			var taskName = $("#txtTask").val();
+			taskCollection.add(taskName);
+			renderTaskList();
+		});
+
+		$("#ulTaskList").on("click","li",function(){
+			var id = parseInt($(this).attr("taskId"),10);
+			var task = taskCollection.get(id);
+			task.toggleCompletion();
+			renderTaskList();
+		});
+
+		$("#btnRemoveCompleted").click(function(){
+			taskCollection.removeCompleted();
+			renderTaskList();
+		});
+
+		function renderTaskList(){
+			var data = {list : taskCollection.getAll()};
+			var html = template(data);
+			$("#ulTaskList").html(html);
+		}
+	});
+	</script>
+	<script id="taskListTemplate" type="text/text-template">
+		{{#each list}}
+		<li  taskId = "{{id}}"
+		   {{#if isCompleted}} 
+		   		class="completed"
+		   	{{/if}}>
+		   	{{name}}</li>
+		{{/each}}
+	</script>
+</head>
+<body>
+	<h1>Task Manager</h1>
+	<hr>
+	<div>
+		<span>Task :</span>
+		<input type="text" name="" id="txtTask">
+		<input type="button" value="Add Task" id="btnAddTask">
+		<input type="button" value="Remove Completed" id="btnRemoveCompleted">
+		<ul id="ulTaskList"></ul>
+	</div>
+</body>
+</html>

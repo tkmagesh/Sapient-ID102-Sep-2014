@@ -42,3 +42,44 @@ Validations:
 	name -> should NOT be an empty string
 	unitCost -> should be > 0
 	discountPercent -> should be > 0 and < 100
+
+function Product(id,name,unitCost,discountPercent){
+	var _id = 0,
+		_name = "",
+		_unitCost = 0,
+		_discountPercent = 0;
+
+	this.id = function(val){
+		if (typeof val === "undefined") return _id;
+		if (val > 0) _id = val;
+		return this;
+	};
+	this.name = function(val){
+		if (typeof val === "undefined" ) return _name;
+		if (val !== "") _name = val;
+		return this;
+	};
+	this.unitCost = function(val){
+		if (typeof val === "undefined") return _unitCost;
+		if (val > 0) _unitCost = val;
+		return this;
+	};
+	this.discountPercent = function(val){
+		if (typeof val === "undefined") return _discountPercent;
+		if (val > 0 && val < 100) _discountPercent = val;
+		return this;
+	};
+	this.getValue = function(){
+		return this.unitCost() * ((100 - this.discountPercent())/100)
+	};
+	this.id(id);
+	this.name(name);
+	this.unitCost(unitCost);
+	this.discountPercent(discountPercent);
+
+}
+
+Assignment:
+===========
+Create a html page where the user can calculate his Net Salary
+Net salary = Basic + HRA + DA - tax

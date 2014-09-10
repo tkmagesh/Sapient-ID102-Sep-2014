@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Salary Calculator</title>
+	<style>
+	label{
+		display : block;
+	}
+	#divResult{
+		color : red;
+		font-size: 28pt;
+		font-style: italic;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+	<h1>Salary Calculator</h1>
+	<hr>
+	<div>
+		<div><label for="txtBasic">Basic :</label><input type="text" name="" id="txtBasic"></div>
+		<div><label for="txtHRA">HRA :</label><input type="text" name="" id="txtHRA"></div>
+		<div><label for="txtDA">DA :</label><input type="text" name="" id="txtDA"></div>
+		<div>
+			<label for="rangeTax">Tax :</label>
+			<input type="range" name="" id="rangeTax" min="0" max="30">
+			<span id="spanTax">[Tax%]</span>
+		</div>
+		<div><input type="button" value="Calculate" id="btnCalculate"></div>
+		<div>
+			<div id="divResult">$0.00</div>
+		</div>
+	</div>
+</body>
+</html>

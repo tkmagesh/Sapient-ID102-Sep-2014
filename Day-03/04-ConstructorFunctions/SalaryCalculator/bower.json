@@ -1,0 +1,25 @@
+{
+  "name": "SalaryCalculator",
+  "version": "0.1.0",
+  "homepage": "SalaryCalculator.html",
+  "authors": [
+    "tkmagesh <tkmagesh77@gmail.com>"
+  ],
+  "description": "A sample salary calculator",
+  "main": "app.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "javascript"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -16,6 +16,7 @@
 	</style>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script>
+	/* Model */
 	function SalaryCalculator(basic, hra, da, tax){
 		this.basic = basic;
 		this.hra = hra;
@@ -27,6 +28,23 @@
 			this.salary =  gross * ((100-this.tax)/100);
 		}
 	}
+	</script>
+	<script>
+	$(function(){
+		var calculator = new SalaryCalculator();
+		$("#btnCalculate").click(function(){
+			calculator.basic = parseInt($("#txtBasic").val(),10);
+			calculator.hra = parseInt($("#txtHRA").val(),10);
+			calculator.da = parseInt($("#txtDA").val(),10);
+			calculator.tax = parseInt($("#rangeTax").val(),10);
+
+			calculator.calculate();
+			$("#divResult").html('$' + calculator.salary);
+		});
+		$("#rangeTax").change(function(){
+			$("#spanTax").html(this.value + "%");
+		});
+	});
 	</script>
 </head>
 <body>

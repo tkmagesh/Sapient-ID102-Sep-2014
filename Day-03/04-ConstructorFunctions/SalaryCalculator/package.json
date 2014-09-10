@@ -1,0 +1,14 @@
+{
+  "name": "SalaryCalculator",
+  "version": "0.1.0",
+  "description": "A sample salary calculator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JavaScript"
+  ],
+  "author": "Magesh K",
+  "license": "BSD-2-Clause"
+}

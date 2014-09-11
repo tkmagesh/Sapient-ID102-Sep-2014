@@ -23,11 +23,12 @@
 		this.da = da;
 		this.tax = tax;
 		this.salary = 0;
-		this.calculate = function(){
-			var gross = this.basic + this.hra + this.da;
-			this.salary =  gross * ((100-this.tax)/100);
-		}
+		
 	}
+    SalaryCalculator.prototype.calculate = function(){
+        var gross = this.basic + this.hra + this.da;
+        this.salary =  gross * ((100-this.tax)/100);
+    }
 	</script>
 	<script>
 	$(function(){

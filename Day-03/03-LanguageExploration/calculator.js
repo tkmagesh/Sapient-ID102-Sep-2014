@@ -4,7 +4,7 @@ function add(x,y){
 		if (n instanceof Array) return add.apply(this, n); // todo : n (array) has to converted to an argument list
 		return isNaN(n) ? 0 : parseInt(n,10);
 	}
-	return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + add([].slice.call(arguments,1));
+	return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + add(Array.prototype.slice.call(arguments,1));
 }
 
 	/*

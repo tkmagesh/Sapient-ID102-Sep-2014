@@ -1,0 +1,13 @@
+root
+    bower_components
+        jquery
+        Handlebars
+    index.html
+    scripts
+        app
+            mainApp.js
+            Task.js
+            TaskCollection.js
+            taskStorage.js
+            TaskManagerView.js
+        

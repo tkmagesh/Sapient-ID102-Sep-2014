@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<style type="text/css">
+		.completed {
+			text-decoration: line-through;
+			font-style: italic;
+			font-weight: bold;
+			color : red;
+		}
+	</style>
+	<script src="require.js" data-main="mainApp"></script>
+	
+	<script id="taskListTemplate" type="text/text-template">
+		{{#each list}}
+		<li  taskId = "{{id}}"
+		   {{#if isCompleted}} 
+		   		class="completed"
+		   	{{/if}}>
+		   	{{name}}</li>
+		{{/each}}
+	</script>
+</head>
+<body>
+	<h1>Task Manager</h1>
+	<hr>
+	<div>
+		<span>Task :</span>
+		<input type="text" name="" id="txtTask">
+		<input type="button" value="Add Task" id="btnAddTask">
+		<input type="button" value="Remove Completed" id="btnRemoveCompleted">
+		<ul id="ulTaskList"></ul>
+	</div>
+</body>
+</html>

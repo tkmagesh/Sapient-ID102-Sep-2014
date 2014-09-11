@@ -86,6 +86,24 @@
 		}
 	}
         
+    $(function(){
+        var view = new TaskManagerView();
+        view.init();
+    });
+        
+    /*
+        window.localStorage
+        => collection of key/value pairs, with both key and value as string
+        
+        setItem(k,v)
+        getItem(k) => return v
+        removeItem(k)
+        key(index) => return k at index
+        length => returns the total number of items
+        clear()
+        
+    */
+        
 	</script>
 	<script id="taskListTemplate" type="text/text-template">
 		{{#each list}}

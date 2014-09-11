@@ -26,13 +26,31 @@
 
 	/*Model - TaskCollection*/
 	function TaskCollection(){
-		var counter = 0;
-		var tasks = [];
+		
+		var tasks = getAllTasksFromStorage();
+        
+        function getAllTasksFromStorage(){
+            var result = [];
+            for(var i=0;i<window.localStorage.length;i++){
+                var key = window.localStorage.key(i);
+                var data = window.localStorage.getItem(key);
+                var task = window.JSON.parse(data);
+                result.push(task);
+            }
+            return result;
+        }
 
 		this.add = function(taskName, isCompleted){
-			var task = new Task(++counter, taskName, isCompleted);
+            var newTaskId = new Date().getTime().toString();
+			var task = new Task(newTaskId, taskName, isCompleted);
+            addTaskToStorage(task);
 			tasks.push(task);
 		};
+        
+        function addTaskToStorage(task){
+             window.localStorage.setItem(task.id, window.JSON.stringify(task));
+        }
+        
 		this.get = function(taskId){
 			for(var i=0;i<tasks.length;i++)
 				if (tasks[i].id === taskId)
@@ -49,9 +67,16 @@
 		};
 		this.removeCompleted = function(){
 			for(var i=tasks.length-1;i>=0;i--)
-				if (tasks[i].isCompleted)
+				if (tasks[i].isCompleted){
+                    removeTaskFromStorage(tasks[i]);
 					tasks.splice(i,1);	
+                }
 		};
+        
+        function removeTaskFromStorage(task){
+            window.localStorage.removeItem(task.id);
+        }
+        
 		this.getAll = function(){
 			return tasks.slice();	
 		}
@@ -78,6 +103,8 @@
                 taskCollection.removeCompleted();
                 renderTaskList();
             });
+            
+            renderTaskList();
         }
 		function renderTaskList(){
 			var data = {list : taskCollection.getAll()};

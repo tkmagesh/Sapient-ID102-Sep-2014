@@ -24,34 +24,78 @@
     Task.prototype.toggleCompletion = function(){
         this.isCompleted = !this.isCompleted;
     }
-
-	/*Model - TaskCollection*/
-	function TaskCollection(){
-		
-		var tasks = getAllTasksFromStorage();
+    /*Module pattern*/
+    /*var taskStorage = (function(){
+        var ts = {};
+        var storage = window.localStorage;
         
-        function getAllTasksFromStorage(){
+        ts.getAll = function(){
             var result = [];
-            for(var i=0;i<window.localStorage.length;i++){
-                var key = window.localStorage.key(i);
-                var dataAsString = window.localStorage.getItem(key);
+            for(var i=0;i<storage.length;i++){
+                var key = storage.key(i);
+                var dataAsString = storage.getItem(key);
                 var data = window.JSON.parse(dataAsString);
                 var task = new Task(data.id, data.name, data.isCompleted);
                 result.push(task);
             }
             return result;
+        };
+        ts.add = function (task){
+             storage.setItem(task.id, window.JSON.stringify(task));
+        };
+        ts.remove = function (task){
+            storage.removeItem(task.id);
         }
+        return ts;
+    })();*/
+    
+    //Revealing Module Pattern
+    var taskStorage = (function(){
+        
+        var storage = window.localStorage;
+        
+        function getAll(){
+            var result = [];
+            for(var i=0;i<storage.length;i++){
+                var key = storage.key(i);
+                var dataAsString = storage.getItem(key);
+                var data = window.JSON.parse(dataAsString);
+                var task = new Task(data.id, data.name, data.isCompleted);
+                result.push(task);
+            }
+            return result;
+        };
+        function add(task){
+             storage.setItem(task.id, window.JSON.stringify(task));
+        };
+        function remove(task){
+            storage.removeItem(task.id);
+        }
+        return {
+            add : add,
+            remove : remove,
+            getAll : getAll
+        }
+    })();
+        
+        
+ 
+
+	/*Model - TaskCollection*/
+	function TaskCollection(){
+		
+		
+        //var taskStorage = new TaskStorage();
+        var tasks = taskStorage.getAll();
 
 		this.add = function(taskName, isCompleted){
             var newTaskId = new Date().getTime().toString();
 			var task = new Task(newTaskId, taskName, isCompleted);
-            addTaskToStorage(task);
+            taskStorage.add(task);
 			tasks.push(task);
 		};
         
-        function addTaskToStorage(task){
-             window.localStorage.setItem(task.id, window.JSON.stringify(task));
-        }
+        
         
 		this.get = function(taskId){
 			for(var i=0;i<tasks.length;i++)
@@ -70,14 +114,12 @@
 		this.removeCompleted = function(){
 			for(var i=tasks.length-1;i>=0;i--)
 				if (tasks[i].isCompleted){
-                    removeTaskFromStorage(tasks[i]);
+                    taskStorage.remove(tasks[i]);
 					tasks.splice(i,1);	
                 }
 		};
         
-        function removeTaskFromStorage(task){
-            window.localStorage.removeItem(task.id);
-        }
+        
         
 		this.getAll = function(){
 			return tasks.slice();	

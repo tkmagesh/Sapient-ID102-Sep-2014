@@ -1,0 +1,25 @@
+{
+  "name": "Angular-Intro",
+  "version": "0.1.0",
+  "homepage": "index.html",
+  "authors": [
+    "tkmagesh <tkmagesh77@gmail.com>"
+  ],
+  "description": "A demo app for angular",
+  "main": "app.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

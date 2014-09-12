@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<style type="text/css">
+		.completed {
+			text-decoration: line-through;
+			font-style: italic;
+			font-weight: bold;
+			color : red;
+		}
+	</style>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="scripts/handlebars-v2.0.0.js"></script>
+	<script>
+        window.taskApp = window.taskApp || {};
+    </script>
+	<script src="Task.js"></script>
+	<script src="TaskCollection.js"></script>
+	<script src="taskStorage.js"></script>
+	<script src="TaskManagerView.js"></script>
+	
+	<script type="text/javascript">
+    $(function(){
+        var view = new taskApp.TaskManagerView();
+        view.init();
+    });
+        
+	</script>
+	<script id="taskListTemplate" type="text/text-template">
+		{{#each list}}
+		<li  taskId = "{{id}}"
+		   {{#if isCompleted}} 
+		   		class="completed"
+		   	{{/if}}>
+		   	{{name}}</li>
+		{{/each}}
+	</script>
+</head>
+<body>
+	<h1>Task Manager</h1>
+	<hr>
+	<div>
+		<span>Task :</span>
+		<input type="text" name="" id="txtTask">
+		<input type="button" value="Add Task" id="btnAddTask">
+		<input type="button" value="Remove Completed" id="btnRemoveCompleted">
+		<ul id="ulTaskList"></ul>
+	</div>
+</body>
+</html>

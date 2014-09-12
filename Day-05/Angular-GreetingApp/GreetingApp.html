@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app >
+<head>
+    <meta charset="UTF-8">
+    <title>Angular - Intro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.js"></script>
+    <style>
+    label{
+        display : block;
+    }
+        
+    </style>
+    <script>
+    function greetController($scope){
+        /*$scope.firstName = "Magesh";
+        $scope.lastName = "Kuppan";*/
+        $scope.greet = function(){
+            $scope.greetMsg = "Hi " + $scope.firstName + " " + $scope.lastName;
+        }
+    }
+    </script>
+</head>
+<body >
+    <div data-ng-controller="greetController">
+        <div>
+            <label for="txtFirstName">First Name : </label>
+            <input type="text" data-ng-model="firstName">
+        </div>
+        <div>
+            <label for="txtFirstName">Last Name : </label>
+            <input type="text" data-ng-model="lastName">
+        </div>
+        <div>
+            <input type="button" value="Greet" data-ng-click="greet()" >
+        </div>
+        <div>
+            <span>{{greetMsg}}</span>
+        </div> 
+    </div>
+    
+</body>
+</html>

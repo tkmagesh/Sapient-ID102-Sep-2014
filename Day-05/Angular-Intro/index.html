@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Angular - Intro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.js"></script>
+    <script>
+        angular.module("module1",[]);
+        
+    </script>
+</head>
+<body>
+   <div ng-app="module1">
+    Show? <input type="checkbox" data-ng-model="showName"> 
+    <input type="text" data-ng-model="name" >
+    <input type="text" data-ng-model="name" >
+    <div ng-show="showName">{{name}}</div>   
+    </div> 
+    
+   <hr>
+   
+   
+    
+</body>
+</html>

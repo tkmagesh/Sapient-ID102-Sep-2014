@@ -1,0 +1,15 @@
+Task
+	- id
+	- name
+	- isCompleted
+	- toggleCompletion()
+
+TaskCollection
+	- add()
+	- remove()
+	- length
+	- [indexer]
+
+Templates
+
+Whenever a task or the taskCollection undergoes changes, re-render the task list in the UI using templates

@@ -4,17 +4,24 @@
 	<meta charset="UTF-8">
 	<title>Calculator</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.js"></script>
+	<script>
+    function calculatorController($scope){
+        $scope.display = function(){
+            console.log($scope.operation);
+        }
+    }
+    </script>
 </head>
-<body>
+<body ng-app ng-controller="calculatorController">
 	<input type="text" name="" id="txtNumber1">
-	<select name="" id="operator">
-		<option value="+">Add</option>
+	<select name="" id="operator" ng-model="operation">
+		<option value="+" >Add</option>
 		<option value="-">Subtract</option>
 		<option value="*">Multiply</option>
 		<option value="/">Divide</option>
 	</select>
 	<input type="text" name="" id="txtNumber2">
-	<input type="button" value="Calculate" id="btnCalculate">
+	<input type="button" value="Calculate" id="btnCalculate" ng-click="display()">
 	<div id="divResult"></div>
 </body>
 </html>

@@ -14,7 +14,7 @@
         padding: 3px;
         margin-top: 5px;
     }
-    li.completed{
+    .completed{
         border: 2px solid #f00;
         background-color: #edd3e3;
     }
@@ -25,25 +25,29 @@
 	<script src="scripts/angular.js"></script>
 	
 	<script>
-    var taskApp = angular.module("taskApp", []);
-    taskApp.factory('Task', function(){
+    angular.module("taskApp", []);
+        
+    angular.module("taskApp").factory('Task', function(){
         function Task(defaults){
             this.id = defaults.id || 0;
             this.name = defaults.name || "";
             this.isCompleted = defaults.isCompleted || false;
+            this.createdAt = defaults.createdAt || new Date();
+            this.completedAt = defaults.completedAt;
         }
         Task.prototype.toggleCompletion = function(){
             this.isCompleted = !this.isCompleted;
+            this.completedAt = (this.isCompleted ? new Date() : undefined);
         }
         return Task;
     });
         
     
-    taskApp.factory("taskStorage", function(Task){
+    angular.module("taskApp").service("taskStorage", function(Task){
         
         var storage = window.localStorage;
         
-        function getAll(){
+        this.getAll = function(){
             var result = [];
             for(var i=0;i<storage.length;i++){
                 var key = storage.key(i);
@@ -54,21 +58,17 @@
             }
             return result;
         };
-        function addOrUpdate(task){
+        this.addOrUpdate = function(task){
              storage.setItem(task.id, window.JSON.stringify(task));
         };
-        function remove(task){
+        this.remove = function(task){
             storage.removeItem(task.id);
         }
-        return {
-            addOrUpdate : addOrUpdate,
-            remove : remove,
-            getAll : getAll
-        }
+        
     });
         
     
-    taskApp.controller("taskController", function ($scope, taskStorage, Task){
+    angular.module("taskApp").controller("taskController", function ($scope, taskStorage, Task){
         $scope.tasks = taskStorage.getAll();
         
         $scope.addTask = function(taskName){
@@ -116,14 +116,25 @@
 	    
 	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask)">
 	    <input type="button" value="Remove Completed" data-ng-click="removeCompleted()">
-
-	        <ul>
-                <li 
-                data-ng-repeat="task in tasks" 
-                data-ng-click="toggleCompletion(task)"
-                data-ng-class="{completed : task.isCompleted}"
-                >{{task}}</li>
-            </ul>    
+        <table data-ng-hide="tasks.length === 0" style="width:75%; margin-top:10px" border="1" cellpadding="5px">
+            <tr>
+                <th>#</th>
+                <th data-ng-click="sortOrder='name'">Name</th>
+                <th data-ng-click="sortOrder='createdAt'">Created On</th>
+                <th data-ng-click="sortOrder='isCompleted'">Is Completed</th>
+                <th data-ng-click="sortOrder='completedAt'">Completed On</th>
+                <th></th>
+            </tr>
+            <tr data-ng-repeat="task in tasks | orderBy:'name':true">
+                <td style="text-align:center">{{$index}}</td>
+                <td data-ng-class="{completed: task.isCompleted}">{{task.name | uppercase}}</td>
+                <td>{{task.createdAt | date}}</td>
+                <td>{{task.isCompleted}}</td>
+                <td>{{task.completedAt | date}}</td>
+                <td><input type="button" value="Toggle Completion" data-ng-click="toggleCompletion(task)"></td>
+            </tr>
+        </table>
+	         
 	    
 	</div>
 </body>

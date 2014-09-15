@@ -25,22 +25,66 @@
 	<script src="scripts/angular.js"></script>
 	
 	<script>
+    var Task = (function(){
+        function Task(id, name, isCompleted){
+            this.id = id;
+            this.name = name;
+            this.isCompleted = isCompleted;
+            /*this.id = defaults.id || 0;
+            this.name = defaults.name || "";
+            this.isCompleted = defaults.isCompleted || false;*/
+        }
+        Task.prototype.toggleCompletion = function(){
+            this.isCompleted = !this.isCompleted;
+        }
+        return Task;
+    })();
+        
+    var taskStorage = (function(){
+        
+        var storage = window.localStorage;
+        
+        function getAll(){
+            var result = [];
+            for(var i=0;i<storage.length;i++){
+                var key = storage.key(i);
+                var dataAsString = storage.getItem(key);
+                var data = window.JSON.parse(dataAsString);
+               
+                result.push(data);
+            }
+            return result;
+        };
+        function addOrUpdate(task){
+             storage.setItem(task.id, window.JSON.stringify(task));
+        };
+        function remove(task){
+            storage.removeItem(task.id);
+        }
+        return {
+            addOrUpdate : addOrUpdate,
+            remove : remove,
+            getAll : getAll
+        }
+    })();
     function taskController($scope){
-        $scope.tasks = [];
+        $scope.tasks = taskStorage.getAll();
+        
         $scope.addTask = function(taskName){
-            var newTask = {
-                name : taskName,
-                isCompleted : false
-            };
+            var newTask = new Task( new Date().getTime().toString(), taskName, false );
+            taskStorage.addOrUpdate(newTask);
             $scope.tasks.push(newTask);
         }
         $scope.toggleCompletion = function(task){
-            task.isCompleted = !task.isCompleted;
+            task.toggleCompletion();
+            taskStorage.addOrUpdate(task);
         }
         $scope.removeCompleted = function(){
             for(var i=$scope.tasks.length-1;i>=0;i--){
-                if ($scope.tasks[i].isCompleted)
+                if ($scope.tasks[i].isCompleted){
+                    taskStorage.remove($scope.tasks[i])
                     $scope.tasks.splice(i,1);
+                }
             }
             
         }

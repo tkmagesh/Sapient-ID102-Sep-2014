@@ -21,6 +21,9 @@
     .completedCount{
         color : red
     }
+    .sortColumn {
+        background-color: lightblue;
+    }
     </style>
 	<script src="scripts/angular.js"></script>
 	
@@ -70,6 +73,17 @@
     
     angular.module("taskApp").controller("taskController", function ($scope, taskStorage, Task){
         $scope.tasks = taskStorage.getAll();
+        $scope.sortOrder = "",
+        $scope.reverse = false;
+        
+        $scope.sort = function(attrName){
+            if ($scope.sortOrder === attrName) {
+                $scope.reverse = !$scope.reverse;
+                return;
+            }
+            $scope.sortOrder = attrName;
+            $scope.reverse = false;
+        }
         
         $scope.addTask = function(taskName){
             var newTask = new Task({id: new Date().getTime().toString(),name: taskName,isCompleted: false });
@@ -119,18 +133,21 @@
         <table data-ng-hide="tasks.length === 0" style="width:75%; margin-top:10px" border="1" cellpadding="5px">
             <tr>
                 <th>#</th>
-                <th data-ng-click="sortOrder='name'">Name</th>
-                <th data-ng-click="sortOrder='createdAt'">Created On</th>
-                <th data-ng-click="sortOrder='isCompleted'">Is Completed</th>
-                <th data-ng-click="sortOrder='completedAt'">Completed On</th>
+                <th data-ng-click="sort('name')" data-ng-class="{sortColumn : sortOrder==='name'}">
+                    Name
+                    
+                </th>
+                <th data-ng-click="sort('createdAt')" data-ng-class="{sortColumn : sortOrder==='createdAt'}">Created On</th>
+                <th data-ng-click="sort('isCompleted')" data-ng-class="{sortColumn : sortOrder==='isCompleted'}">Is Completed</th>
+                <th data-ng-click="sort('completedAt')" data-ng-class="{sortColumn : sortOrder==='completedAt'}">Completed On</th>
                 <th></th>
             </tr>
-            <tr data-ng-repeat="task in tasks | orderBy:'name':true">
+            <tr data-ng-repeat="task in tasks | orderBy:sortOrder:reverse">
                 <td style="text-align:center">{{$index}}</td>
-                <td data-ng-class="{completed: task.isCompleted}">{{task.name | uppercase}}</td>
-                <td>{{task.createdAt | date}}</td>
-                <td>{{task.isCompleted}}</td>
-                <td>{{task.completedAt | date}}</td>
+                <td data-ng-class="{completed: task.isCompleted, sortColumn : sortOrder==='name'}">{{task.name | uppercase}}</td>
+                <td data-ng-class="{sortColumn : sortOrder==='createdAt'}">{{task.createdAt | date}}</td>
+                <td data-ng-class="{sortColumn : sortOrder==='isCompleted'}">{{task.isCompleted}}</td>
+                <td data-ng-class="{sortColumn : sortOrder==='completedAt'}">{{task.completedAt | date}}</td>
                 <td><input type="button" value="Toggle Completion" data-ng-click="toggleCompletion(task)"></td>
             </tr>
         </table>

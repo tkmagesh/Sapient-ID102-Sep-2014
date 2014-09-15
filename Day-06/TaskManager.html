@@ -26,13 +26,10 @@
 	
 	<script>
     var Task = (function(){
-        function Task(id, name, isCompleted){
-            this.id = id;
-            this.name = name;
-            this.isCompleted = isCompleted;
-            /*this.id = defaults.id || 0;
+        function Task(defaults){
+            this.id = defaults.id || 0;
             this.name = defaults.name || "";
-            this.isCompleted = defaults.isCompleted || false;*/
+            this.isCompleted = defaults.isCompleted || false;
         }
         Task.prototype.toggleCompletion = function(){
             this.isCompleted = !this.isCompleted;
@@ -50,8 +47,8 @@
                 var key = storage.key(i);
                 var dataAsString = storage.getItem(key);
                 var data = window.JSON.parse(dataAsString);
-               
-                result.push(data);
+                var task = new Task(data);
+                result.push(task);
             }
             return result;
         };
@@ -71,7 +68,7 @@
         $scope.tasks = taskStorage.getAll();
         
         $scope.addTask = function(taskName){
-            var newTask = new Task( new Date().getTime().toString(), taskName, false );
+            var newTask = new Task({id: new Date().getTime().toString(),name: taskName,isCompleted: false });
             taskStorage.addOrUpdate(newTask);
             $scope.tasks.push(newTask);
         }

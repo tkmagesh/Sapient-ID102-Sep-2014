@@ -25,7 +25,8 @@
 	<script src="scripts/angular.js"></script>
 	
 	<script>
-    var Task = (function(){
+    var taskApp = angular.module("taskApp", []);
+    taskApp.factory('Task', function(){
         function Task(defaults){
             this.id = defaults.id || 0;
             this.name = defaults.name || "";
@@ -35,10 +36,10 @@
             this.isCompleted = !this.isCompleted;
         }
         return Task;
-    })();
+    });
         
-    var taskApp = angular.module("taskApp", []);
-    taskApp.factory("taskStorage", function(){
+    
+    taskApp.factory("taskStorage", function(Task){
         
         var storage = window.localStorage;
         
@@ -67,7 +68,7 @@
     });
         
     
-    taskApp.controller("taskController", function ($scope, taskStorage){
+    taskApp.controller("taskController", function ($scope, taskStorage, Task){
         $scope.tasks = taskStorage.getAll();
         
         $scope.addTask = function(taskName){

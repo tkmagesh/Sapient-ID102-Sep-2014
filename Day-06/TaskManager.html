@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<style>
+    ul{
+        list-style: none;
+        width: 40%;
+    }
+    li{
+        border: 2px solid #e7e7e7;
+        background-color: #eee;
+        padding: 3px;
+        margin-top: 5px;
+    }
+    li.completed{
+        border: 2px solid #f00;
+        background-color: #edd3e3;
+    }
+    .completedCount{
+        color : red
+    }
+    </style>
+	<script src="scripts/angular.js"></script>
+	
+	<script>
+    function taskController($scope){
+        $scope.tasks = [];
+        $scope.addTask = function(taskName){
+            var newTask = {
+                name : taskName,
+                isCompleted : false
+            };
+            $scope.tasks.push(newTask);
+        }
+        $scope.toggleCompletion = function(task){
+            task.isCompleted = !task.isCompleted;
+        }
+        $scope.removeCompleted = function(){
+            for(var i=$scope.tasks.length-1;i>=0;i--){
+                if ($scope.tasks[i].isCompleted)
+                    $scope.tasks.splice(i,1);
+            }
+            
+        }
+        $scope.getTotalCount = function(){
+            return $scope.tasks.length;
+        };
+        $scope.getCompletedCount = function(){
+            var completedCount = 0;
+            angular.forEach($scope.tasks, function(value){
+                if (value.isCompleted)
+                    ++completedCount;
+            });
+            return completedCount;
+        }
+    }
+    </script>
+</head>
+<body data-ng-controller="taskController">
+	<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{getTotalCount()}}</span>]
+</h1>
+	
+	<hr>
+	<div>
+	    <label for="txtTask">Task :</label>
+	    <input type="text" data-ng-model="newTask">
+	    
+	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask)">
+	    <input type="button" value="Remove Completed" data-ng-click="removeCompleted()">
+
+	        <ul>
+                <li 
+                data-ng-repeat="task in tasks" 
+                data-ng-click="toggleCompletion(task)"
+                data-ng-class="{completed : task.isCompleted}"
+                >{{task}}</li>
+            </ul>    
+	    
+	</div>
+</body>
+</html>

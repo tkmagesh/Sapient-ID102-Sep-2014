@@ -27,11 +27,15 @@
 	<script>
     function taskController($scope){
         $scope.tasks = {
-            personal : [],
-            official : [],
-            recreational : []
+          
         };
-        
+        $scope.addCategory = function(newCategory){
+            /*
+            if (typeof $scope.tasks[newCategory] === "undefined")
+                $scope.tasks[newCategory] = [];
+            */
+            $scope.tasks[newCategory] = $scope.tasks[newCategory] || [];
+        }
         $scope.addTask = function(taskName, taskCategory){
             var newTask = {
                 name : taskName,
@@ -80,13 +84,17 @@
 	<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{getTotalCount()}}</span>]
 </h1>
 	<hr>
+	Category : <input type="text" data-ng-model="newCategory">
+	<input type="button" value="Add Category" data-ng-click="addCategory(newCategory)">
+	<hr>
 	<div>
 	    <label for="txtTask">Task :</label>
 	    <input type="text" data-ng-model="newTask">
 	    <select data-ng-model="taskCategory">
-	        <option value="personal">Personal</option>
+	        <!--<option value="personal">Personal</option>
 	        <option value="official">Official</option>
-	        <option value="recreational">Recreational</option>
+	        <option value="recreational">Recreational</option>-->
+	        <option data-ng-repeat="(category,taskList) in tasks" value="{{category}}">{{category}}</option>
 	    </select>
 	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask, taskCategory)">
 	    <input type="button" value="Remove Completed" data-ng-click="removeCompleted()">

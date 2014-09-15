@@ -32,41 +32,52 @@
             recreational : []
         };
         
-        $scope.addTask = function(taskName){
+        $scope.addTask = function(taskName, taskCategory){
             var newTask = {
                 name : taskName,
                 isCompleted : false
             };
-            $scope.tasks.push(newTask);
+            $scope.tasks[taskCategory].push(newTask);
         }
         $scope.toggleCompletion = function(task){
             task.isCompleted = !task.isCompleted;
         }
         $scope.removeCompleted = function(){
-            var oldTasks = $scope.tasks;
+            /*var oldTasks = $scope.tasks;
             $scope.tasks = [];
             angular.forEach(oldTasks, function(value){
                 if (!value.isCompleted)
                     $scope.tasks.push(value);
-            }); 
-            /*for(var i=$scope.tasks.length-1;i>=0;i--){
-                if ($scope.tasks[i].isCompleted)
-                    $scope.tasks.splice(i,1);
-            }*/
+            }); */
+            for(var category in $scope.tasks){
+                var taskList = $scope.tasks[category];
+                for(var i=taskList.length-1;i>=0;i--){
+                    if (taskList[i].isCompleted)
+                        taskList.splice(i,1);
+                }
+            }
         }
+        $scope.getTotalCount = function(){
+            var count = 0;
+            for(var category in $scope.tasks)
+                count += $scope.tasks[category].length;
+            return count;
+        };
         $scope.getCompletedCount = function(){
             var completedCount = 0;
-            angular.forEach($scope.tasks, function(value){
-                if (value.isCompleted)
-                    ++completedCount;
-            });
+            for(var category in $scope.tasks){
+                angular.forEach($scope.tasks[category], function(value){
+                    if (value.isCompleted)
+                        ++completedCount;
+                });
+            }
             return completedCount;
         }
     }
     </script>
 </head>
 <body data-ng-controller="taskController">
-	<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{tasks.length}}</span>]
+	<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{getTotalCount()}}</span>]
 </h1>
 	<hr>
 	<div>
@@ -77,15 +88,19 @@
 	        <option value="official">Official</option>
 	        <option value="recreational">Recreational</option>
 	    </select>
-	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask)">
+	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask, taskCategory)">
 	    <input type="button" value="Remove Completed" data-ng-click="removeCompleted()">
-	    <ul id="ulTaskList">
-	        <li 
-	        data-ng-repeat="task in tasks" 
-	        data-ng-click="toggleCompletion(task)"
-	        data-ng-class="{completed : task.isCompleted}"
-	        >{{task}}</li>
-	    </ul>
+	    <div data-ng-repeat="(category,taskList) in tasks">
+            <h3>{{category}}</h3>
+	        <ul>
+                <li 
+                data-ng-repeat="task in taskList" 
+                data-ng-click="toggleCompletion(task)"
+                data-ng-class="{completed : task.isCompleted}"
+                >{{task}}</li>
+            </ul>    
+	    </div>
+	    
 	</div>
 </body>
 </html>

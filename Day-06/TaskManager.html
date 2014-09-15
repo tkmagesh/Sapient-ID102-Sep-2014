@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app>
+<html lang="en" data-ng-app="taskApp">
 <head>
 	<meta charset="UTF-8">
 	<title>Task Manager</title>
@@ -37,7 +37,8 @@
         return Task;
     })();
         
-    var taskStorage = (function(){
+    var taskApp = angular.module("taskApp", []);
+    taskApp.factory("taskStorage", function(){
         
         var storage = window.localStorage;
         
@@ -63,8 +64,10 @@
             remove : remove,
             getAll : getAll
         }
-    })();
-    function taskController($scope){
+    });
+        
+    
+    taskApp.controller("taskController", function ($scope, taskStorage){
         $scope.tasks = taskStorage.getAll();
         
         $scope.addTask = function(taskName){
@@ -96,10 +99,12 @@
             });
             return completedCount;
         }
-    }
+    });
+        
+    
     </script>
 </head>
-<body data-ng-controller="taskController">
+<body  data-ng-controller="taskController">
 	<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{getTotalCount()}}</span>]
 </h1>
 	

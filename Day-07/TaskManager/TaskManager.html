@@ -2,33 +2,20 @@
 <html lang="en" data-ng-app="taskApp">
 <head>
 	<meta charset="UTF-8">
-	<title>Task Manager</title>
-	<style>
-    ul{
-        list-style: none;
-        width: 40%;
-    }
-    li{
-        border: 2px solid #e7e7e7;
-        background-color: #eee;
-        padding: 3px;
-        margin-top: 5px;
-    }
-    .completed{
-        border: 2px solid #f00;
-        background-color: #edd3e3;
-    }
-    .completedCount{
-        color : red
-    }
-    .sortColumn {
-        background-color: lightblue;
-    }
-    </style>
+	<link rel="stylesheet" href="styles/style.css">
 	<script src="scripts/angular.js"></script>
 	
 	<script>
-    angular.module("taskApp", []);
+    angular.module("utils",[]);
+    angular.module("utils").filter("trimText",function(){
+        return function(data, trimLength){
+            data = data || "";
+            trimLength = trimLength || 10;
+            return data.length <= trimLength ? data : data.substr(0,trimLength) + "...";
+        }
+    });
+    
+    angular.module("taskApp", ['utils']);
         
     angular.module("taskApp").factory('Task', function(){
         function Task(defaults){
@@ -70,13 +57,6 @@
         
     });
         
-    angular.module("taskApp").filter("trimText",function(){
-        return function(data, trimLength){
-            data = data || "";
-            trimLength = trimLength || 10;
-            return data.length <= trimLength ? data : data.substr(0,trimLength) + "...";
-        }
-    });
         
     
     angular.module("taskApp").controller("taskController", function ($scope, taskStorage, Task){
@@ -194,6 +174,7 @@
                 <td data-ng-class="{sortColumn : sortOrder==='completedAt'}">{{task.completedAt | date}}</td>
                 <td><input type="button" value="Toggle Completion" data-ng-click="toggleCompletion(task)"></td>
                 <td><input type="button" value="Edit" ng-click="setTaskToEdit(task)" ></td>
+                <td><a href="#">Details</a></td>
             </tr>
         </table>
 	         

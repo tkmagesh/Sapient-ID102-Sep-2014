@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Routing Demo</title>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script>
+    var routingDemoApp = angular.module('routingDemoApp',['ngRoute']);
+    routingDemoApp.controller('employeesController',function($scope, $routeParams){
+        console.log($routeParams);
+    });
+    routingDemoApp.controller('customersController',function($scope, $routeParams){
+        console.log($routeParams);
+    });
+        
+    routingDemoApp.config(function($routeProvider){
+        $routeProvider.when('/employees/:employeeid',{
+            templateUrl : "templates/employees.tmpl.html",
+            controller : "employeesController"
+        }).when('/customers/:customerid', {
+            controller : "customersController",
+            templateUrl : "templates/customers.tmpl.html"
+        }).otherwise({redirectTo : '/employees/100'});
+    });
+        
+    routingDemoApp.controller("rootController",function(){
+        console.log("root controller initialized");
+    });
+    </script>
+</head>
+<body ng-app="routingDemoApp" ng-controller="rootController">
+    <a href="#/customers/100">Customers</a> <br>
+    <a href="#/employees/200">Employees</a>
+    <ng-view></ng-view>
+</body>
+</html>

@@ -84,6 +84,9 @@
         $scope.sortOrder = "",
         $scope.reverse = false;
         
+        $scope.setTaskToEdit=function(task){
+            $scope.taskToEdit = task;
+        }
         $scope.sort = function(attrName){
             if ($scope.sortOrder === attrName) {
                 $scope.reverse = !$scope.reverse;
@@ -127,6 +130,13 @@
                     ++completedCount;
             });
             return completedCount;
+        };
+        $scope.updateTask = function(evt){
+            
+            if (evt.keyCode === 13){
+            
+                $scope.taskToEdit = undefined;
+            }
         }
     });
         
@@ -167,14 +177,23 @@
                         <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
                     </span>    </th>
                 <th></th>
+                <th></th>
             </tr>
             <tr data-ng-repeat="task in tasks | filter:searchTask | orderBy:sortOrder:reverse">
                 <td style="text-align:center">{{$index}}</td>
-                <td data-ng-class="{completed: task.isCompleted, sortColumn : sortOrder==='name'}">{{task.name | trimText:taskNameLength}}</td>
+                <td data-ng-class="{completed: task.isCompleted, sortColumn : sortOrder==='name'}">
+                <div ng-if="taskToEdit === task"  >
+                    <input type="text" ng-model="task.name" ng-keypress="updateTask($event)">
+                </div>
+                <span ng-if="taskToEdit !== task">
+                    {{task.name | trimText:taskNameLength}}    
+                </span>
+                </td>
                 <td data-ng-class="{sortColumn : sortOrder==='createdAt'}">{{task.createdAt | date}}</td>
                 <td data-ng-class="{sortColumn : sortOrder==='isCompleted'}">{{task.isCompleted}}</td>
                 <td data-ng-class="{sortColumn : sortOrder==='completedAt'}">{{task.completedAt | date}}</td>
                 <td><input type="button" value="Toggle Completion" data-ng-click="toggleCompletion(task)"></td>
+                <td><input type="button" value="Edit" ng-click="setTaskToEdit(task)" ></td>
             </tr>
         </table>
 	         

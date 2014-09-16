@@ -1,6 +1,17 @@
 
-    angular.module("taskApp").controller("taskController", function ($scope, taskStorage, Task){
-        $scope.tasks = taskStorage.getAll();
+    angular.module("taskApp").controller("taskController", function ($scope, /*taskStorage*/taskServer, Task){
+        var taskStorage = taskServer;
+        
+        $scope.tasks = [];
+        var promise = taskStorage.getAll();
+        promise.then(function(response){
+            var result = [];
+            for(var i =0;i<response.data.length;i++){
+                result.push(new Task(response.data[i]));
+            }
+            $scope.tasks = result;
+        });
+        
         $scope.sortOrder = "",
         $scope.reverse = false;
         

@@ -70,6 +70,14 @@
         
     });
         
+    angular.module("taskApp").filter("trimText",function(){
+        return function(data, trimLength){
+            data = data || "";
+            trimLength = trimLength || 10;
+            return data.length <= trimLength ? data : data.substr(0,trimLength) + "...";
+        }
+    });
+        
     
     angular.module("taskApp").controller("taskController", function ($scope, taskStorage, Task){
         $scope.tasks = taskStorage.getAll();
@@ -128,7 +136,9 @@
 <body  data-ng-controller="taskController">
 	<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{getTotalCount()}}</span>]
 </h1>
-	
+	<label for="">Search :</label><input type="search" ng-model="searchTask.name" >
+	Is Completed ? : <input type="checkbox" ng-model="taskCompletionFlag" ng-click="searchTask.isCompleted = (taskCompletionFlag ? undefined : true)">
+	Task Name Length : <input type="range" ng-model="taskNameLength" min="10" max="50">
 	<hr>
 	<div>
         
@@ -141,17 +151,26 @@
             <tr>
                 <th>#</th>
                 <th data-ng-click="sort('name')" data-ng-class="{sortColumn : sortOrder==='name'}">
-                    Name <sub>{{sortStatus('name')}}</sub>
+                    Name 
+                    <span ng-show="'name' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    
                     
                 </th>
-                <th data-ng-click="sort('createdAt')" data-ng-class="{sortColumn : sortOrder==='createdAt'}">Created On <sub>{{sortStatus('createdAt')}}</sub></th>
-                <th data-ng-click="sort('isCompleted')" data-ng-class="{sortColumn : sortOrder==='isCompleted'}">Is Completed <sub>{{sortStatus('isCompleted')}}</sub></th>
-                <th data-ng-click="sort('completedAt')" data-ng-class="{sortColumn : sortOrder==='completedAt'}">Completed On <sub>{{sortStatus('completedAt')}}</sub></th>
+                <th data-ng-click="sort('createdAt')" data-ng-class="{sortColumn : sortOrder==='createdAt'}">Created On <span ng-show="'createdAt' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    </th>
+                <th data-ng-click="sort('isCompleted')" data-ng-class="{sortColumn : sortOrder==='isCompleted'}">Is Completed <span ng-show="'isCompleted' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    </th>
+                <th data-ng-click="sort('completedAt')" data-ng-class="{sortColumn : sortOrder==='completedAt'}">Completed On <span ng-show="'completedAt' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    </th>
                 <th></th>
             </tr>
-            <tr data-ng-repeat="task in tasks | orderBy:sortOrder:reverse">
+            <tr data-ng-repeat="task in tasks | filter:searchTask | orderBy:sortOrder:reverse">
                 <td style="text-align:center">{{$index}}</td>
-                <td data-ng-class="{completed: task.isCompleted, sortColumn : sortOrder==='name'}">{{task.name | uppercase}}</td>
+                <td data-ng-class="{completed: task.isCompleted, sortColumn : sortOrder==='name'}">{{task.name | trimText:taskNameLength}}</td>
                 <td data-ng-class="{sortColumn : sortOrder==='createdAt'}">{{task.createdAt | date}}</td>
                 <td data-ng-class="{sortColumn : sortOrder==='isCompleted'}">{{task.isCompleted}}</td>
                 <td data-ng-class="{sortColumn : sortOrder==='completedAt'}">{{task.completedAt | date}}</td>

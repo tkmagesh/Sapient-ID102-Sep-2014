@@ -1,0 +1,56 @@
+<h1>Task Manager - [<span class="completedCount">{{getCompletedCount()}}</span>/<span>{{getTotalCount()}}</span>]
+</h1>
+	<label for="">Search :</label><input type="search" ng-model="searchTask.name" >
+	Is Completed ? : <input type="checkbox" ng-model="taskCompletionFlag" ng-click="searchTask.isCompleted = (taskCompletionFlag ? undefined : true)">
+	Task Name Length : <input type="range" ng-model="taskNameLength" min="10" max="50">
+	<hr>
+	<div>
+        
+	    <label for="txtTask">Task :</label>
+	    <input type="text" data-ng-model="newTask">
+	    
+	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask)">
+	    <input type="button" value="Remove Completed" data-ng-click="removeCompleted()">
+        <table data-ng-hide="tasks.length === 0" style="width:75%; margin-top:10px" border="1" cellpadding="5px">
+            <tr>
+                <th>#</th>
+                <th data-ng-click="sort('name')" data-ng-class="{sortColumn : sortOrder==='name'}">
+                    Name 
+                    <span ng-show="'name' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    
+                    
+                </th>
+                <th data-ng-click="sort('createdAt')" data-ng-class="{sortColumn : sortOrder==='createdAt'}">Created On <span ng-show="'createdAt' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    </th>
+                <th data-ng-click="sort('isCompleted')" data-ng-class="{sortColumn : sortOrder==='isCompleted'}">Is Completed <span ng-show="'isCompleted' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    </th>
+                <th data-ng-click="sort('completedAt')" data-ng-class="{sortColumn : sortOrder==='completedAt'}">Completed On <span ng-show="'completedAt' === sortOrder">
+                        <img ng-src="icons/{{reverse?'arrow_down.png' : 'arrow_up.png'}}">
+                    </span>    </th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr data-ng-repeat="task in tasks | filter:searchTask | orderBy:sortOrder:reverse">
+                <td style="text-align:center">{{$index}}</td>
+                <td data-ng-class="{completed: task.isCompleted, sortColumn : sortOrder==='name'}">
+                <div ng-if="taskToEdit === task"  >
+                    <input type="text" ng-model="task.name" ng-keypress="updateTask($event)">
+                </div>
+                <span ng-if="taskToEdit !== task">
+                    {{task.name | trimText:taskNameLength}}    
+                </span>
+                </td>
+                <td data-ng-class="{sortColumn : sortOrder==='createdAt'}">{{task.createdAt | date}}</td>
+                <td data-ng-class="{sortColumn : sortOrder==='isCompleted'}">{{task.isCompleted}}</td>
+                <td data-ng-class="{sortColumn : sortOrder==='completedAt'}">{{task.completedAt | date}}</td>
+                <td><input type="button" value="Toggle Completion" data-ng-click="toggleCompletion(task)"></td>
+                <td><input type="button" value="Edit" ng-click="setTaskToEdit(task)" ></td>
+                <td><a href="#/tasks/{{task.id}}">Details</a></td>
+            </tr>
+        </table>
+	         
+	    
+	</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="taskApp">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles/style.css">
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-route.js"></script>
+	
+	<script src="utils/module/utils.module.js"></script>
+	<script src="utils/filters/trimText.filter.js"></script>
+	
+	<script src="tasks/module/taskApp.module.js"></script>
+	<script src="tasks/factories/Task.factory.js"></script>
+	<script src="tasks/services/taskStorage.Service.js"></script>
+	<script src="tasks/controllers/tasks.controller.js"></script>
+	<script src="tasks/controllers/taskDetails.controller.js"></script>
+	
+	<script src="app.js"></script>
+	
+</head>
+<body  ng-app="taskApp">
+<ng-view></ng-view>
+</body>
+</html>

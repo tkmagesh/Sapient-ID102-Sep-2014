@@ -1,0 +1,26 @@
+<h1>Task </h1>
+<a href="#/tasks">List</a>
+<hr>
+<style>
+    th {
+        text-align: left
+    }
+</style>
+<table>
+    <tr>
+        <th>Name</th>
+        <td>{{task.name}}</td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>{{task.createdAt | date}}</td>
+    </tr>
+    <tr>
+        <th>Is Completed ?</th>
+        <td>{{task.isCompleted}}</td>
+    </tr>
+    <tr ng-show="task.isCompleted">
+        <th>Completed At</th>
+        <td>{{task.completedAt | date}}</td>
+    </tr>
+</table>

@@ -1,20 +1,18 @@
 
-angular.module("taskApp").controller("taskController", function ($scope, taskStorage, Task) {
-    'use strict';
-    /*var taskStorage = taskServer,
+angular.module("taskApp").controller("taskController", 
+                                     function ($scope, taskServer, Task) {
+    
+    var taskStorage = taskServer,
         i,
         promise;
+    $scope.taskDataAvailable = false;
     $scope.tasks = [];
-    promise = taskStorage.getAll();
-    promise.then(function (response) {
-        var result = [];
-        for (i = 0; i < response.data.length; i++) {
-            result.push(new Task(response.data[i]));
-        }
-        $scope.tasks = result;
-    });*/
-    var i;
-    $scope.tasks = taskStorage.getAll();    
+    var taskStoragePromise = taskStorage.getAll();
+    taskStoragePromise.then(function(result){
+        $scope.tasks = result;    
+        $scope.taskDataAvailable = true;
+    });
+    
     $scope.sortOrder = "";
     $scope.reverse = false;
 

@@ -1,0 +1,93 @@
+#loginContainer, #forgotPassContainer, #logoutContainer {
+	background-color: #fff;
+	width: 350px;
+	padding: 40px 0px 40px 50px;
+	
+	margin: auto;
+	margin-top: 150px;
+	
+	border-radius:25px;
+	box-shadow: 0px 0px 10px;
+}
+
+
+
+
+#signin, #logoutMsg {
+	font-size: 12px;
+	font-weight: normal;
+	color: grey;
+	clear:both;
+	padding: 20px 0 20px 10px;
+
+}
+
+h1{
+	font-size: 1.1em;
+	font-weight: normal;
+}
+
+label{
+	display:inline-block;
+	width:80px;
+
+}
+
+input{
+	margin:5px;
+}
+
+
+
+
+#forgot{
+	font-size: 12px;
+	display:inline-block;
+	float:right;
+	padding-right: 110px;
+
+}
+#forgot a{
+	color: blue;
+	text-decoration:none;
+
+}
+
+
+#login{
+	margin:30px 50px 40px 110px;
+	width:70px;
+	font-family:museoSans;
+	
+}
+
+#logo{
+	float:left;
+	margin:0 0 10px 10px;
+	height:100px;
+}
+
+#mdms{
+	float:right;
+	padding-top:20px;
+	font-weight: bold;
+	width:200px;
+	font-size:20px;
+}
+
+#error{
+	font-size: 15px;
+	display:inline-block;
+	color:red;
+	padding:10px;
+}
+
+#loginReturn a{
+	text-decoration: none;
+	color:blue;
+}
+
+#Notify{
+	float: right;
+	margin-right: 140px;
+}

@@ -1,0 +1,28 @@
+
+#createform {
+	margin-left:250px;
+	margin-right:auto;
+	padding:30px;
+	margin-top:0px;
+}
+
+h1 {
+	font-size:20px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	padding-left:10px;
+}
+
+label {
+	display:inline-block;
+	width:130px;
+	margin:10px;
+}
+
+#submitBtn {
+	margin:20px 0 0 120px;
+	color:#0b1b5f;
+	margin-top:20px;
+		
+}
+

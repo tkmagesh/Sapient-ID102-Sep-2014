@@ -1,0 +1,43 @@
+#logo {
+	width: 50px;
+	height: 50px;
+}
+
+
+#displayMessage div{
+  position: absolute;
+  bottom: 380px;
+  left:630px;
+  float: left;
+  clear: both;
+
+  padding:10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: 2px solid #e7e7e7;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+label{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#errMsg{
+	color :red;
+}
+
+span{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+#header{
+	background-color: #EBFAFF;
+}

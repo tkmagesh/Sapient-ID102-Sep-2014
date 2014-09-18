@@ -1,0 +1,56 @@
+@font-face {
+	font-family: museoSans;
+	src: url('../font/MuseoSans_500-webfont.ttf') format('truetype'),
+		 url('../font/MuseoSans_500-webfont.woff') format('woff'),
+		 url('../font/MuseoSans_500-webfont.svg') format('svg'),
+		 url('../font/MuseoSans_500-webfont.eot') format('embedded-opentype');
+}
+
+
+#buttons{
+	margin-left:250px;
+	display:inline-block;
+}
+
+#tableContainer{
+	margin-left:250px;
+	margin-right:auto;
+	padding:30px;
+	margin-top:0px;
+}
+
+h1 {
+	font-size:20px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	padding-left:0px;
+}
+
+th{
+	padding:10px 90px 20px 0px;
+	font-size:15px;
+}
+
+
+td{
+	padding:5px;
+	padding-left:0px;
+}
+
+td a{
+	text-decoration: none;
+	color:blue;
+}
+
+.btn{
+	display:inline-block;
+	padding:7px 10px;
+	margin:0px 30px 0px 25px;
+	font-family:museoSans;
+	border-radius: 5px ;
+	font-size:12px;
+	width:auto;
+	background-color: #0b1b5f;
+	color:white;
+	cursor:pointer;
+}

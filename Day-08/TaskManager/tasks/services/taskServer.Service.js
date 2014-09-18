@@ -1,17 +1,18 @@
-angular.module("taskApp").service("taskServer", function($http, $q, Task){
+angular.module("taskApp").service("taskServer", function($resource, $http, $q, Task){
+        var resource = $resource("data/tasks.json");
         
         this.getAll = function(onCompletion){
-            var defered = $q.defer();
             
-            var httpPromise = $http({method :"get", url :'data/tasks.json'});
-            httpPromise.then(function(response){
+            var defered = $q.defer();
+            resource.query(function(tasks){
                 setTimeout(function(){
                     var result = [];
-                    for(var i=0;i<response.data.length;i++)
-                        result.push(new Task(response.data[i]));
+                    for(var i=0;i<tasks.length;i++)
+                        result.push(new Task(tasks[i]));
                     defered.resolve(result);
-                },10000);
+                },1000);
             });
+            
             
             return defered.promise;
         };

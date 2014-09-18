@@ -1,0 +1,80 @@
+
+#createform{
+
+	margin-left:250px;
+	margin-right:auto;
+	width: 70%;
+	padding:30px;
+	margin-top:0px;
+
+
+}
+
+h1{
+	font-size:20px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	padding-left:10px;
+}
+label{
+	display:inline-block;
+	width:130px;
+	margin:10px;
+
+}
+#submitBtn{
+	margin:20px 0 0 120px;
+	color:#0b1b5f;
+	
+}
+
+#dialogBox{
+	width:150px;
+	margin-top:0px;
+
+}
+
+#dialogBox label{
+	color:#0b1b5f;
+	font-size:13px;
+	margin-top:10px;
+	padding-left:45px;
+
+}
+
+#dialogBox h1{
+	color: #0b1b5f;
+	padding-top:0px;
+}
+
+.textDisplay{
+display: inline-block;
+width: 190px;
+margin-top: 10px;
+}
+#submitCurrency{
+margin-left: 153px;
+margin-top: 20px;
+}
+#errorMsg{
+margin-left: 6px;
+
+}
+#footer{
+margin-top: 18px;
+}
+
+.ui-button-text{
+	color:white;
+}
+
+.ui-dialog-content.ui-widget-content{
+	width: inherit !important; 
+	margin-left : 0px !important;
+}
+#dialogBox{
+	width:inherit;
+	margin-left: 0px;
+
+}
+

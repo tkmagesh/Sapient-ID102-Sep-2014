@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create User</title>
+	
+	<script type="text/javascript" src="../../vendor/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../../vendor/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../script/main.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+
+	<link rel="stylesheet" href="../../vendor/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../css/createuser.css" type="text/css">
+</head>
+
+<body>
+	<div id="wrapper">
+	<div id="logo">
+		<a href="../search/index.html" class="fixed"><img src="../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../search/index.html"><img src="../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../entity_management/index.html"><img src="../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../user_management/usermanagement.html"><img src="../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+				<li><a href="../entity_management/approval_ui_index.html"><img src="../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../login/loggedout.html"><img src="../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+		<div id="createform">
+			<form>
+				<h1>Create new User</h1>
+
+				<label for="firstNameTxtBox">First Name:</label> 
+				<input type="text" id="firstNameTxtBox" class="input_textbox">
+				<span id="errMsgFirstName" class="errMsg"></span></br>
+
+				<label for="lastNameTxtBox">Last Name: </label>
+				<input type="text" id="lastNameTxtBox" class="input_textbox">
+				<span id="errMsgLastName" class="errMsg"></span></br>
+
+				<label for="userNameTxtBox">Username:</label>
+				<input type="text" id="userNameTxtBox" class="input_textbox">
+				<span id="errMsgUserName" class="errMsg"></span></br>
+
+				<label for="passwordTxtbox">Password:</label> 
+				<input type="password" id="passwordTxtbox" class="input_textbox">
+				<span id="errMsgPassword" class="errMsg"></span></br>
+
+				<label for="businessRole">Business Role:</label> 
+				<select name="Role" id="roleSelect">
+					<option value="admin">Admin</option>
+					<option value="business">Business User</option>
+				</select></br>
+				<input type="submit" id="submitBtn" value="Submit" class="btn">
+			</form>
+		</div>
+
+		<div id="successfullCreationDialogBox" title="SUCCESSFUL CREATION">
+			New User has been successfully created and added to the MDM
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+

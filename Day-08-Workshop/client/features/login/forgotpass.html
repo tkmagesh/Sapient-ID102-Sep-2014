@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forgot Password</title>
+	<script type="text/javascript" src="../../vendor/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../../vendor/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/forgotpass.js"></script>
+
+
+	<link rel="stylesheet" href="../../vendor/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../css/login.css">
+</head>
+
+	<body>
+		<div>
+			<section id="forgotPassContainer">
+				<img src="../../img/logo.png" id="logo">
+			 	<div id="mdms">MASTER DATA MANAGEMENT</div></br>
+			 	<h3 id="signin"> FORGOT PASSWORD </h3>
+				<form>
+					<h3>Enter your username to notify the administrator</h3></br>
+					<label for="username">Username: </label><input type="text" id="username"></br>
+					<input type="button" id="Notify" value="NOTIFY ADMIN"></br>
+					<div id="loginReturn"><a href="index.html">Return to sign in</a></div>
+				</form>
+			</section>
+			<div id="dialogSent"> 
+			Notification has been sent to an Admin. You will receive an email with your new password shortly
+			</div>
+			<div id="dialogNeedInfo">Please Enter a valid username.</div>
+		</div>
+	</body>
+</html>

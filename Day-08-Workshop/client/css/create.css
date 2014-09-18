@@ -1,0 +1,84 @@
+
+.create {
+	margin-left:250px;
+	margin-right:auto;
+	padding:30px;
+	margin-top:0px;
+}
+
+h1 {
+	font-size:20px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	padding-left:10px;
+}
+
+label {
+	display:inline-block;
+	width:130px;
+	margin:10px;
+}
+
+button {
+	margin:20px 0 0 120px;
+	color:#0b1b5f;
+}
+
+.dialog{
+	width:150px;
+	margin-top:0px;
+}
+
+.dialog label{
+	color:#0b1b5f;
+	font-size:13px;
+	margin-top:10px;
+	padding-left:0px;
+}
+
+
+.dialog h1{
+	color: #0b1b5f;
+	padding-top:0px;
+}
+
+#ok{
+	margin-left:130px;
+	
+}
+
+#newErrMsg{
+	color:red;
+	margin-top:12px;
+	text-align: center;
+	margin-bottom:17px;
+}
+
+.confirmBtn{
+	cursor:pointer;
+	background-color: #0b1b5f;
+	color:white;
+	border-radius:5px;
+	padding:5px;
+	position: absolute;
+	left: 55px;
+	top:150px;
+	margin:20px 0 0 150px;
+}
+
+.submitBtn{
+	margin:20px 0 0 120px;
+	
+	font-family:museoSans;
+	padding:7px;
+	
+}
+
+#successMsg{
+	text-align: center;
+	padding: 10px 0px;
+}
+
+.error{
+	color:red;
+}

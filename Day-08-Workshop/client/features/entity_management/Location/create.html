@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create Location</title>
+	<script type="text/javascript" src="../../../vendor/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../../../vendor/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../../script/main.js"></script>
+	<script type="text/javascript" src="../js/script.js"></script>
+
+	<link rel="stylesheet" href="../../../vendor/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/create.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/createlocation.css" type="text/css">
+</head>
+
+<body>
+	<div id="wrapper">
+	<div id="logo">
+		<a href="../../search/index.html" class="fixed"><img src="../../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../../search/index.html"><img src="../../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../../entity_management/index.html"><img src="../../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../../user_management/createnewuser.html"><img src="../../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+				<li><a href="../../entity_management/approval_ui_index.html"><img src="../../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../../login/loggedout.html"><img src="../../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+		<div id="createLocation" class="create">
+			<h1>Create Location</h1>
+			
+			<label for="locationName">Location Name: </label><input type="text" id="locationName" maxlength="100"></input>
+	 		<span id="errMsg" class="error"></span><br/>
+
+	 		<label for="locationDesc">Location Description: </label>
+	 		<div><textarea rows="4" cols="50" id="locationDesc"></textarea></div>
+
+	 		<input type="button" value="Submit" id="submitLocation"  class="submitBtn btn">
+		</div>
+
+		<div id="locationDialog" title="Confirm Location Creation" class="dialog">
+			<form id='locationDialogForm'>
+				<fieldset>
+					<label for="locationNewName">Location Name: </label> 
+			        <span id="locationNewName" class="confirmtext"></span></br>
+
+				    <label for="locationNewDesc">Location description: </label>
+				    <span id="locationNewDesc" class="confirmtext"></span></br>
+				    <input type="button" value="Confirm" id="confirmLocation" tabindex="-1" class="confirmBtn">
+				</fieldset>
+			</form> 
+		</div>
+
+		<div id="successMsg" title="Created Succesfully">Entity Successfully Created</div>
+		
+	</div>
+</body>
+</html>

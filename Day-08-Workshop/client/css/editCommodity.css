@@ -1,0 +1,37 @@
+#editContainer {
+	width: 395px;
+	margin: 0px auto;
+}
+h1 {
+font-size: 20px;
+text-transform: uppercase;
+padding-left: 82px;
+}
+.textDisplay{
+display: inline-block;
+width: 190px;
+margin-top: 10px;
+}
+#editButton{
+margin-left: 19px;
+}
+#submitData{
+margin-left: 153px;
+margin-top: 20px;
+}
+#errorMsg{
+margin-left: 0px;
+}
+#footer{
+margin-top: 18px;
+}
+
+.ui-button-text{
+	color:white;
+}
+
+
+.ui-dialog-content.ui-widget-content{
+	width: inherit !important; 
+	margin-left : 0px !important;
+}

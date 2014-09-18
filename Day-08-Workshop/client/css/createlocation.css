@@ -1,0 +1,11 @@
+#submitLocation{
+	margin:30px 0 0 170px;
+}
+
+#confirmLocation{
+	position: absolute;
+	left: 55px;
+	top:190px;
+	margin:20px 0 0 150px;
+	
+}

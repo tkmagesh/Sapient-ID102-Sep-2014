@@ -1,0 +1,35 @@
+.entityLinkGroup {
+	text-align:center;
+	text-transform: uppercase;
+	margin: 20px 0;
+}
+
+.entityLinkGroup h1 {
+	color: #7fc1ee;
+	font-size: 30px;
+}
+
+.entityLink {
+	background-color: #aaa;
+	padding: 7px;
+	border: none;
+	border-radius: 5px;
+	font-family: museoSans, Arial, sans-serif;
+	cursor: pointer;
+	font-size: 14px;
+	margin: 10px auto;
+	width: 200px;
+}
+
+.entityLink a {
+	color: #fff;
+	clear: left;
+	margin: 6px 0;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.entityLink img {
+	float: left;
+	margin-left: 8px;
+}

@@ -1,1 +1,1 @@
-angular.module("taskApp", ['utils','ngRoute']);
+angular.module("taskApp", ['utils','ngRoute','ngResource']);

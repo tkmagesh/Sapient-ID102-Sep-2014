@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+	<html lang='en'>
+	<head>
+		<meta charset='UTF-8'>
+		<title>Edit location</title>
+
+		<script src='../../../vendor/jquery-2.1.1.js' type='text/javascript'></script>
+		<script src='../../../vendor/jquery-ui.js' type='text/javascript'></script>
+		<script src='index_location.js' type='text/javascript'></script>
+		<script src='../../../script/main.js' type='text/javascript'></script>
+		<link rel='stylesheet' href='../../../css/main.css' type='text/css'>
+		<link rel='stylesheet' type='text/css' href='edit_location.css'>
+		<link rel='stylesheet' type='text/css' href='../../../vendor/jquery-ui.css'>
+	</head>
+
+	<body>
+		<div id="wrapper">
+	<div id="logo">
+		<a href="../../search/index.html" class="fixed"><img src="../../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../../search/index.html"><img src="../../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../../entity_management/index.html"><img src="../../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../../user_management/createnewuser.html"><img src="../../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+				<li><a href="../../entity_management/approval_ui_index.html"><img src="../../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../../login/loggedout.html"><img src="../../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+			<div id = 'createform'>
+				<h1>Edit Location</h1>
+
+				<label for='newLocation'>Enter new location: </label>
+				<input type = 'text' id = 'locNameTxt'>
+
+				<br>
+
+				<label for='locationDescription'>Description:</label>
+				<textarea rows = '4' cols = '50' id='locDescriptionText'></textarea>
+
+				<br>
+
+				<div>
+					<span id='errorMsg'></span>
+				</div>
+				<div>
+					<input type = 'submit' id ='submitLocation' value='Save' class = 'btn'>
+				</div>
+			</div>
+			
+			<div id = 'successfullCreationDialogBox' title='Successfully updated'>
+				<p>Entity Successfully Edited</p>
+			</div>
+		</div>
+			
+	</body>
+</html>

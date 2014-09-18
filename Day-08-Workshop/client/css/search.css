@@ -1,0 +1,210 @@
+/*------------------SEARCH CONTAINER-------------------*/
+
+#searchContainer {
+	text-align: center;
+	margin: 30px 0;
+}
+
+/*------------------SEARCH BAR-------------------*/
+
+#searchBlock {
+	margin-bottom: 40px;
+}
+
+.block {
+	display: block;
+	height: 10px;
+}
+
+.error {
+	color: red;
+	font-style: italic;
+	font-size: 70%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#searchText {
+	background: white url(../img/magglass.png) left no-repeat;
+	background-size: 40px 40px;
+	margin: 10px 0;
+	padding: 5px 5px 5px 55px;
+	border: none;
+	width: 542px;
+	font-family: museoSans, Arial, sans-serif;
+	color: #7fc1ee;
+	font-size:30px;
+}
+
+#searchText:focus {
+	border-bottom: 1px solid #ddd;
+}
+
+#enterAssist {
+	color: #aaa;
+	font-size: 12px;
+}
+
+/*------------------SEARCH FILTERS-------------------*/
+
+.searchFiltersBox {
+	display: inline-block;
+	margin: 20px auto;
+}
+
+	.searchFiltersBox span {
+		color: #333;
+		text-transform: uppercase;
+		font-size: 11px;
+		text-decoration: none;
+		line-height: 2;
+		padding: 0 0 0 10px;
+		position: relative;
+		bottom: 8px;
+	}
+
+#markets, #commodity, #location, #currency {
+	width:160px;
+	height: 70px;
+	margin: 5px 5px;
+	color: #636868;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-family: museoSans, Arial, sans-serif;
+	padding: 5px;
+}
+
+	#markets:focus, #commodity:focus, #location:focus, #currency:focus {
+		border: 1px solid #333;
+	}
+
+
+/*------------------SEARCH RESULTS TABLE--------------------*/
+
+table {
+	width: 680px;
+	margin: 30px auto;
+}
+
+th {
+	background-color: #7fc1ee;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 5px 20px;
+	margin: 0 auto;
+}
+
+tbody tr td {
+	text-align: center;
+	padding: 5px 0;
+}
+
+thead th, tbody td {
+	width: 40%;
+}
+
+tbody {
+	color: #636868;
+}
+
+tbody tr:nth-child(odd){
+	background-color: #ddd;
+}
+
+.hide {
+	display: none;
+}
+
+/*------------------------------ FLAGGING -----------------*/
+
+#btnFlag {
+	padding: 7px;
+	border: none;
+	border-radius: 5px;
+	color: #fff !important;
+	font-family: museoSans, Arial, sans-serif;
+	cursor:pointer;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-decoration:none;
+	box-shadow: 0 0 1px #0084dd;
+	background-color: #7fc1ee;
+}
+
+#btnFlag:hover, #btnFlag:active {
+	box-shadow: 0 0 2px #0084dd;
+}
+
+#adminAlert {
+text-align: center;
+margin-bottom: 10px;
+}
+
+#flagMsgs {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.flagAlert{
+margin: 0 5px 5px 0;
+width: 75px;
+background-color: #aaa;
+border-radius: 5px;
+text-align: center;
+padding: 10px;
+color: #fff;
+box-shadow: 0 2px 3px #fff;
+}
+
+/*------------------------------Export Buttons-----------------*/
+
+#exportSection {
+	text-align: center;
+}
+
+/*------------------------------Entity Desc BOX-----------------*/
+
+#desc{
+	background-color: #eee;
+}
+
+/*------------------------------INFO BOX-----------------*/
+
+/*#divCloseId{
+	float: right;
+	cursor: pointer;
+	text-align: right;
+	color: red;
+	border: 3px solid black;
+	margin-right: 5px;
+}
+ 
+.divDescrClass{
+    background-color: #555;
+    font-weight: bolder;
+    position: relative;
+    float: right;
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+    width: 25%;
+    margin-right: 12px;
+    color:white;
+    border-radius: 10px;
+    padding: 2px 0px 0px 5px;
+}
+ 
+.hide{
+	display: none;
+}
+
+#divCloseId{ 
+	float: right; 
+	cursor: pointer; 
+	text-align: right; 
+	color: red; 
+	border: 2px solid black; 
+	margin-right: 5px; 
+} 
+*/

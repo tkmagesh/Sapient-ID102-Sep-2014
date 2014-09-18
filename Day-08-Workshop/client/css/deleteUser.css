@@ -1,0 +1,70 @@
+
+#deleteform{
+
+	margin-left:250px;
+	margin-right:auto;
+	width: 50%;
+	padding:30px;
+	margin-top:0px;
+
+
+}
+
+
+h1{
+	font-size:20px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	padding-left:45px;
+
+}
+
+
+
+label{
+	display:inline-block;
+	width:60px;
+	margin-left:45px;
+	margin-right:10px;
+
+}
+
+#deleteBtn{
+	margin:30px 0 0 70px;
+	color:#0b1b5f;
+	cursor:pointer;
+	background-color:#0b1b5f;
+	color:white;
+	border-radius:5px;
+	font-family:museoSans;
+	padding:7px;
+	
+}
+
+#error {
+	display:inline-block;
+	margin-left:5px;
+	color: red;
+}
+
+
+#successfullDeletionDialogBox{
+	width:150px;
+	margin-top:20px;
+
+}
+
+#successfullDeletionDialogBox p{
+	color:grey;
+	font-size:13px;
+	margin-top:20px;
+	padding-left:45px;
+
+}
+
+#successfullDeletionDialogBox h1{
+	color: #0b1b5f;
+
+}
+
+

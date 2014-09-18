@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Market</title>
+  <script type="text/javascript" src="../../../vendor/jquery-2.1.1.js"></script>
+  <script type="text/javascript" src="../../../vendor/jquery-ui.js"></script>
+  <script type="text/javascript" src="../../../script/main.js"></script>
+  <script type="text/javascript" src="../js/script.js"></script>
+
+  <link rel="stylesheet" href="../../../vendor/jquery-ui.css" type="text/css">
+  <link rel="stylesheet" href="../../../css/main.css" type="text/css">
+  <link rel="stylesheet" href="../../../css/create.css" type="text/css">
+  <link rel="stylesheet" href="../../../css/createmarket.css" type="text/css">
+</head>
+
+<body>
+  <div id="wrapper">
+  <div id="logo">
+    <a href="../../search/index.html" class="fixed"><img src="../../../img/logo.png" alt="logo" height="125"></a>
+  </div>
+
+  <header>
+    <hgroup>
+      <div id="title"><span>Master Data Management</span></div>
+      <div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+    </hgroup>
+
+    <nav>
+      <ul>
+        <li><a href="../../search/index.html"><img src="../../../img/glass.png" alt="Search" height="25">
+          <br/><span>Search</span></a></li>
+        <li><a href="../../entity_management/index.html"><img src="../../../img/entityLogo.png" alt="Search" height="25">
+          <br/><span>Entity Mgmt</span></a></li>
+        <li><a href="../../user_management/createnewuser.html"><img src="../../../img/userLogo.png" alt="Search" height="25">
+          <br/><span>User Mgmt</span></a></li>
+        <li><a href="../../entity_management/approval_ui_index.html"><img src="../../../img/approvalsLogo.png" alt="Search" height="23">
+          <br/><span>Pending Approvals</span></a></li>
+        <li><a href="../../login/loggedout.html"><img src="../../../img/logoutLogo.png" alt="Logout" height="25">
+          <br/><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </header>
+    <div id="createMarket" class="create">
+      <h1>Create new Market</h1>
+
+      <label for="marketName">Market Name: </label><input type="text" id="marketName" maxlength="100"><span id="errMsg" class="error"></span><br>
+      
+      <label for="marketLocation">Location:</label>
+      <select id="marketLocation">
+          <option value="" disabled selected>Select a Location</option>
+      </select></br>
+
+      <label for="marketCommodity">Commodity:</label>
+      <select multiple id="marketCommodity">
+        <option value="" disabled>Select a Commodity</option>
+      </select></br>
+
+      <label for="marketCurrency">Currency:</label>
+      <select id="marketCurrency">
+        <option value="" disabled selected>Select a Currency</option>
+      </select></br>
+
+      <label for="newMarketStartDate">Start Date:</label><input type="date" id="marketStartDate"><span id="dateErrMarket" class="error"></span></br>
+
+	    <label for="newMarketEndDate">End Date:</label><input type="date" id="marketEndDate"></br>
+
+      <div id="dateError"></div>
+
+      <input type="button" value="Submit" id="submitMarket"  class="submitBtn btn">
+    </div>
+    
+    <div id="marketDialog" title="Confirm Market Creation" class="dialog">
+      <form id='marketDialogForm'>
+        <fieldset>
+          <label for="marketNewName">Market Name:</label>
+          <span id="marketNewName"  class="confirmtext"></span></br>
+
+          <label for="marketNewLocation">Market Location: </label>
+          <span id="marketNewLocation" class="confirmtext"></span></br>
+          
+          <label for="marketNewCommodity">Market Commodities: </label>
+          <span id="marketNewCommodity" class="confirmtext"></span></br>
+                    
+          <label for="marketNewCurrency">Market Currencies: </label>
+          <span id="marketNewCurrency" class="confirmtext"></span></br>
+
+          <label for="marketNewStartDate">Start Date:</label>
+          <span id="marketNewStartDate" class="confirmtext"></span></br>
+
+          <label for="marketNewEndDate">End Date:</label>
+          <span id="marketNewEndDate" class="confirmtext"></span>
+          
+          <input type="button" value="Confirm" id="confirmMarket" tabindex="-1"  class="confirmBtn">
+          </fieldset>
+      </form> 
+    </div>
+
+    <div id="successMsg" title="Created Succesfully">Entity Successfully Created</div>
+
+  </div>
+</body>
+</html>

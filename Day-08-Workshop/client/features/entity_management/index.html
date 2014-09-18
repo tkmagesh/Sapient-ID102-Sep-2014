@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Entity Management</title>
+	<script type="text/javascript" src="../../vendor/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../../vendor/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../script/main.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+
+	<link rel='stylesheet' type='text/css' href='../../vendor/jquery-ui.css'>
+	<link rel="stylesheet" href="../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../css/controlpanel.css" type="text/css">
+</head>
+<body>
+	<section id="wrapper">
+	<div id="logo">
+		<a href="../search/index.html" class="fixed"><img src="../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../search/index.html"><img src="../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../entity_management/index.html"><img src="../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../user_management/usermanagement.html"><img src="../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+				<li><a href="../entity_management/approval_ui_index.html"><img src="../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../login/loggedout.html"><img src="../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<div class="entityLinkGroup">
+			<h1>Business Entities</h1>
+			<div id="Market">
+
+				<div class="entityLink" id="createMarket">
+					<img src="../../img/marketLogo_white.png" alt="Market" height="25">
+					<a href="Market/create.html">Create Market</a>
+				</div>
+
+			</div>
+
+			<div id="Commodity">
+				<div class="entityLink" id="createCommodity">
+					<img src="../../img/commodityLogo_white.png" alt="Commodity" height="25">
+					<a href="Commodity/create.html">Create Commodity</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="entityLinkGroup">
+			<h1>Admin Entities</h1>
+			<div id="Currency">
+				
+				<div class="entityLink" id="createCurrency">
+					<img src="../../img/currencyLogo_white.png" alt="Currency" height="25">
+					<a href="Currency/create.html">Create Currency</a>
+				</div>
+			</div>
+
+			<div id="Location">
+				<div class="entityLink" id="createlocation">
+					<img src="../../img/locationLogo_white.png" alt="Location" height="25">
+					<a href="Location/create.html">Create Location</a>
+				</div>
+			</div>
+		</div>
+		<div class="entityLinkGroup">
+			<h1>Entity Mapping</h1>
+			<div class="entityLink" id="map"><a href="../mapping/mapping.html">Map Entity</a></div>
+		</div>
+		
+
+	</section>
+
+	<div id="adminOnlyDialog" title="Access Denied">Only an Admin may create this entity. Please contact your supervisor.</div>
+	
+</body>
+</html>

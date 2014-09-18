@@ -1,0 +1,78 @@
+
+
+
+.marketHeader{
+	font-size: 2em;
+}
+
+.allInputs{
+	width: 112px;
+	display: inline-block;	
+}
+
+#createform{
+	margin-left: 400px;
+}
+
+.inputBoxes{
+	margin-left: 20px;
+}
+
+
+
+#successMsg{
+	text-align: center;
+	padding-top:60px;
+}
+
+#ok{
+	margin-left:130px;
+	color: #0b1b5f;
+}
+
+/*#submitButton{
+	position: absolute;
+	left: 55px;
+	top:150px;
+	margin:20px 0 0 150px;
+	color:#0b1b5f;
+	
+}
+
+
+
+.ui-dialog-buttonset{
+    margin-top: 200px;
+    margin-left: 20px;	
+}
+
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close{
+	margin-top: 200px;
+	margin-left: 18px;
+}
+
+.ui-button-icon-primary .ui-icon .ui-icon-closethick{
+	display: none;
+}
+
+.ui-button .ui-widget .ui-state-default .ui-corner-all .ui-button-icon-only .ui-dialog-titlebar-close{
+	margin-top: 200px;
+
+}
+
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable{
+	margin-top: 100px;
+}*/
+.ui-button-text{
+	color:white;
+}
+
+.ui-dialog-content.ui-widget-content{
+	width: inherit !important; 
+	margin-left : 0px !important;
+}
+#dialogBox{
+	width:inherit;
+	margin-left: 0px;
+
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+	<link rel="stylesheet" href="../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../css/search.css" type="text/css">
+	<link rel="stylesheet" href="../../../vendor/jquery-ui.css" type="text/css">
+	
+</head>
+<body>
+<div id="wrapper">
+	<div id="logo">
+		<a href="../search/index.html" class="fixed"><img src="../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../search/index.html"><img src="../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../entity_management/index.html"><img src="../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../user_management/usermanagement.html"><img src="../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+				<li><a href="../entity_management/approval_ui_index.html"><img src="../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../login/loggedout.html"><img src="../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div id="searchContainer">
+		<form id="searchBlock">
+			<div id="errorMessage" class="block"></div>
+			<input type="text" id="searchText" placeholder="Search" autofocus required>
+			<div id="enterAssist"><span>Press Enter to search</span></div>
+		</form>
+
+		<div id="searchFilters">
+			<div class="searchFiltersBox">
+				<img src="../../img/marketLogo.png" alt="Search" height="25"><span>Market</span><br/><select multiple id="markets"></select>
+			</div>
+			<div class="searchFiltersBox">
+				<img src="../../img/commodityLogo.png" alt="Search" height="25"><span>Commodity</span><br/><select multiple id="commodity"></select>
+			</div>
+			<div class="searchFiltersBox">
+				<img src="../../img/locationLogo.png" alt="Search" height="25"><span>Location</span><br/><select multiple id="location"></select>
+			</div>
+			<div class="searchFiltersBox">
+				<img src="../../img/currencyLogo.png" alt="Search" height="25"><span>Currency</span><br/><select multiple id="currency"></select>
+			</div>
+		</div>
+		<div>
+			<a href="#" id="clearButton" class="btn">Reset</a>
+		</div>
+		<div id="searchDisplay">
+			<table id="searchResults">
+				<thead>
+					<tr>
+						<th>Market</th>
+						<th>Commodity</th>
+						<th>Location</th>
+						<th>Currency</th>
+						<th><button type="button" value="flag" name="flag" id="btnFlag" class="btn">Flag</button></th>
+						<th class="delete"></th>
+					</tr>
+				</thead>
+			</table>
+			<section id="exportSection">
+				<button class="btn" id="btnEmail" type="button">Export to Email</button>
+				<button class="btn" id="btnExcel" type="button">Export to Excel</button>
+			</section>
+	<div id="flagMsgs"></div>
+</div>
+	<script src="../../vendor/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../../../vendor/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../../vendor/tableExport.js"></script>
+	<script type="text/javascript" src="../../../vendor/jquery.base64.js"></script>
+	<script src="../../script/main.js"></script>
+	<script src="js/script.js"></script>
+	
+</body>
+</html>

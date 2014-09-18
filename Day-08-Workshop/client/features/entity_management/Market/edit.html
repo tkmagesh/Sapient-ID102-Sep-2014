@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src = "../../../vendor/jquery-1.11.1.js"></script>
+	<script type = "text/javascript" src = "../../../vendor/jquery-ui.js"></script>
+	<script type = "text/javascript" src = "script.js"></script>
+	<link rel="stylesheet" href="../../../vendor/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/editMarket.css" type="text/css">
+</head>
+
+
+<body>
+	<div id="wrapper">
+	<div id="logo">
+		<a href="../../search/index.html" class="fixed"><img src="../../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../../search/index.html"><img src="../../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../../entity_management/index.html"><img src="../../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../../user_management/createnewuser.html"><img src="../../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+				<li><a href="../../entity_management/approval_ui_index.html"><img src="../../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../../login/loggedout.html"><img src="../../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+	<div id="createform">
+		<form>	
+		
+			<h1 class ="marketHeader">Edit Market</h1>	
+
+			<label for="newMarket" class="allInputs">Market Name:  </label>
+			<input type="text" name="" id="marketName" class="inputBoxes">			
+			<br/><br/>
+
+			<label for="location" class="allInputs">Location:</label>			
+			<span id="locationBox" class="inputBoxes"></span>
+			<br/><br/>
+
+			<label for="commodityType" class="allInputs">Commodity Type:</label>			
+			<span id="commodityBox" class="inputBoxes"></span>
+			<br/><br/>
+
+			<label for="currency" class="allInputs">Currency:</label>			
+			<span id="currencyBox" class="inputBoxes"></span>
+			<br/><br/>
+
+			<label for="startDate" class="allInputs">Start Date:</label>
+			<span id="startDate" class="inputBoxes"></span>
+			<br/><br/>
+			<div id="footer"><span id = "errorMsg"></span><br/>
+			<input type="submit" name = "" value="Save" id="submitButton" tabindex="-1"></input>
+			
+		</form>
+	</div>
+
+</div>
+
+<div id="dialogBox" title="Edited Successfully">
+	
+	Entity Successfully Edited
+</div>
+
+</body>
+</html>

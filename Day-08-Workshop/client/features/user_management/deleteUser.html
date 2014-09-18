@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Delete User</title>
+	
+	<script type="text/javascript" src="../../vendor/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="../../vendor/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../script/main.js"></script>
+	<script type="text/javascript" src="deleteUser.js"></script>
+
+	<link rel="stylesheet" href="../../vendor/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="../../css/main.css" type="text/css">
+	<link rel="stylesheet" href="../../css/deleteUser.css" type="text/css">
+</head>
+<body>
+	<div id="wrapper">
+	<div id="logo">
+		<a href="../search/index.html" class="fixed"><img src="../../img/logo.png" alt="logo" height="125"></a>
+	</div>
+
+	<header>
+		<hgroup>
+			<div id="title"><span>Master Data Management</span></div>
+			<div id="welcomeUser"><span>Welcome<span id="username"></span></span></div>
+		</hgroup>
+
+		<nav>
+			<ul>
+				<li><a href="../search/index.html"><img src="../../img/glass.png" alt="Search" height="25">
+					<br/><span>Search</span></a></li>
+				<li><a href="../entity_management/index.html"><img src="../../img/entityLogo.png" alt="Search" height="25">
+					<br/><span>Entity Mgmt</span></a></li>
+				<li><a href="../user_management/usermanagement.html"><img src="../../img/userLogo.png" alt="Search" height="25">
+					<br/><span>User Mgmt</span></a></li>
+
+				<li><a href="../entity_management/approval_ui_index.html"><img src="../../img/approvalsLogo.png" alt="Search" height="23">
+					<br/><span>Pending Approvals</span></a></li>
+				<li><a href="../login/loggedout.html"><img src="../../img/logoutLogo.png" alt="Logout" height="25">
+					<br/><span>Logout</span></a></li>
+			</ul>
+		</nav>
+	</header>
+		<div id="deleteform">
+			<form action="" method="POST">
+				<h1>Delete User</h1>
+				
+				<label for="userNameTxtBox">Username:</label>
+				<input type="text" id="userNameTxtBox" class="input_textbox"><span id="error"></span></br>
+
+				<input type="button" id="deleteBtn" value="Delete" class="btn">
+				
+
+			</form>
+		</div>
+		<div id="successfullDeletionDialogBox" title="SUCCESSFULLY DELETED">
+			
+			User has been deleted successfully
+		</div>
+	</div>
+</body>

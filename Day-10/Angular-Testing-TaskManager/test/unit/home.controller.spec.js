@@ -1,4 +1,4 @@
-describe('DashboardController', function () {
+describe('HomeController', function () {
 
     'use strict';
     var _controller,

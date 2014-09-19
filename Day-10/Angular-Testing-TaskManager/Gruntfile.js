@@ -360,7 +360,7 @@ module.exports = function (grunt) {
             'autoprefixer',
             'connect:livereload',
             'html2js',
-            'jshint',
+            //'jshint',
             'watch'
         ]);
     });
@@ -382,7 +382,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'newer:jshint',
+        //'newer:jshint',
         'build',
         'karma'
     ]);

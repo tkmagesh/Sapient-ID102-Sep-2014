@@ -1,4 +1,4 @@
-angular.module('exercise.angular', []);
+//angular.module('exercise.angular', []);
         
     angular.module('exercise.angular').factory('Task', function(){
         function Task(defaults){

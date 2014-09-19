@@ -1,0 +1,27 @@
+describe('GreetController', function () {
+
+    'use strict';
+    var _controller,
+        _scope;
+
+    beforeEach(function () {
+        // Load the app's main module
+        module('greetApp');
+
+        // Inject the necessary components
+        inject(function ($controller, $rootScope) {
+            _scope = $rootScope.$new();
+            _controller = function () {
+                return $controller('greetController', {$scope: _scope});
+            };
+
+        });
+    });
+
+
+    it('should be defined', function () {
+        expect(_controller()).toBeDefined();
+
+    });
+
+});

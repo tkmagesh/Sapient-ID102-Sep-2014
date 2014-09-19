@@ -82,7 +82,7 @@
  
 
 	/*Model - TaskCollection*/
-	function TaskCollection(){
+	function TaskCollection(taskStorage){
 		
 		
         //var taskStorage = new TaskStorage();
@@ -127,7 +127,7 @@
 	}
 
     function TaskManagerView(){
-		var taskCollection = new TaskCollection();
+		var taskCollection = new TaskCollection(taskStorage);
 		var template = Handlebars.compile($("#taskListTemplate").html());
         this.init = function(){
             $("#btnAddTask").click(function(){

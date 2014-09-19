@@ -1,0 +1,13 @@
+Task
+	1. Is initialized with the given state
+	2. "IsCompleted" is by default initialized with false
+	3. "toggleCompletion" toggles the completion status
+
+TaskCollection
+	1. The default length() === 0
+	2. Adding a new task should increment the length by 1
+	3. The newly added task should be in the list returned by getAll()
+	4. Removing a task using the "remove()" method should decrement the length if the give task is found
+	5. Removing a task should not affect the length if the given task is not found
+	6. "removeCompleted()" should remove all the completed tasks
+

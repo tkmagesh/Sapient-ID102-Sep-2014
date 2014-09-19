@@ -29,6 +29,12 @@
     .sortColumn {
         background-color: lightblue;
     }
+    div[notification-message]{
+        border: 2px solid black;
+        background: #eee;
+        padding: 10px;
+        border-radius: 3px;
+    }
     </style>
     <!-- endbuild -->
 </head>
@@ -70,7 +76,7 @@
                 <td><input type="button" value="Toggle Completion" data-ng-click="toggleCompletion(task)"></td>
             </tr>
         </table>
-	         
+	   <div notification-message class="message">{{message}}</div>
 	    
 	</div>
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope Demo</title>
+    <script>
+    function firstController($scope){
+    }
+    function secondController($scope){
+        $scope.data.firstName = "";
+    }
+    </script>
+    <style>
+    div {
+        padding : 20px;
+        margin: 20px;
+        border : 2px solid black;
+    }
+    </style>
+    <script src="angular.js"></script>
+</head>
+<body ng-app>
+    <div ng-controller="firstController">
+        <h3>First Controller</h3>
+        Name : <input type="text" ng-model="data.firstName">
+        <div ng-controller="secondController">
+            <h3>Second Controller</h3>
+            Name : <input type="text" ng-model="data.firstName">
+        </div>
+    </div>
+</body>
+</html>

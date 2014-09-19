@@ -342,9 +342,7 @@ module.exports = function (grunt) {
             'concurrent:server',
             'autoprefixer',
             'html2js',
-
             'karma',
-
             'watch:karma'
         ]);
     });

@@ -24,7 +24,7 @@ describe('trimText Filter', function () {
         //arrange
         var filter = _filter();
         var data  = "short Text";
-        
+        x
         //act
         var result = filter(data);
         

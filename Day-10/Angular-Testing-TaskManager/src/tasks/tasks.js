@@ -1,4 +1,18 @@
 //angular.module('exercise.angular', []);
+    angular.module('exercise.angular').directive('notificationMessage',function(){
+       return function(scope,elem,attrs){
+                console.dir(attrs);
+                scope.$watch("message",function(){
+                    console.log("message changed - ", scope.message);
+                    elem.fadeIn();
+                });
+                elem.on("click",function(){
+                    $(this).fadeOut();
+                    scope.clearMessage();
+                });
+            };
+        
+    });
     angular.module('exercise.angular').filter('trimText', function(){
         return function(data,trimLength){
             data = data || '';
@@ -47,11 +61,16 @@
     });
         
     
-    angular.module('exercise.angular').controller('taskController', function ($scope, taskStorage, Task){
+    angular.module('exercise.angular')
+    .controller('taskController', ["$rootScope", "$scope", "taskStorage", "Task",function ($rootScope, $scope, taskStorage, Task){
+        $rootScope.data = { dummy : "some value"};
         $scope.tasks = taskStorage.getAll();
         $scope.sortOrder = '',
         $scope.reverse = false;
-        
+        $scope.message = "";
+        $scope.clearMessage = function(){
+            $scope.message = "";
+        };
         $scope.sort = function(attrName){
             if ($scope.sortOrder === attrName) {
                 $scope.reverse = !$scope.reverse;
@@ -65,6 +84,7 @@
             var newTask = new Task({id: new Date().getTime().toString(),name: taskName,isCompleted: false });
             taskStorage.addOrUpdate(newTask);
             $scope.tasks.push(newTask);
+            $scope.message = "A new task is added";
         }
         $scope.toggleCompletion = function(task){
             task.toggleCompletion();
@@ -77,7 +97,7 @@
                     $scope.tasks.splice(i,1);
                 }
             }
-            
+            $scope.message = "Zero or more completed tasks are removed";
         }
         $scope.getTotalCount = function(){
             return $scope.tasks.length;
@@ -90,6 +110,6 @@
             });
             return completedCount;
         }
-    });
+    }]);
         
     

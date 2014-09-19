@@ -32,7 +32,7 @@
     </style>
     <!-- endbuild -->
 </head>
-<body ng-app="exercise.angular" >
+<body ng-app="exercise.angular" ng-controller="taskController" >
 <!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -47,7 +47,7 @@
 	    <label for="txtTask">Task :</label>
 	    <input type="text" data-ng-model="newTask">
 	    
-	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask)">
+	    <input type="button" value="Add Task" id="btnAdd" data-ng-click="addTask(newTask)" ng-disabled="!newTask">
 	    <input type="button" value="Remove Completed" data-ng-click="removeCompleted()">
         <table data-ng-hide="tasks.length === 0" style="width:75%; margin-top:10px" border="1" cellpadding="5px">
             <tr>

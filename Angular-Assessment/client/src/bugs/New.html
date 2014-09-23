@@ -1,0 +1,18 @@
+<h1>Bug</h1>
+
+<div class="fieldContainer">
+    <label for="selectProject">Project :</label>
+    <select id="selectProject" ng-options="project.projectName for project in projects" ng-model="project"></select>
+</div >
+<div class="fieldContainer">
+    <label for="txtTitle">Title :</label>
+    <input type="text" ng-model="newBug.title" id="txtTitle">
+</div>
+<div class="fieldContainer">
+    <label for="txtDescription">Description :</label>
+    <textarea id="txtDescription" cols="30" rows="10" ng-model="newBug.description"></textarea>
+</div>
+<div class="fieldContainer">
+    <input type="button" value="Save" ng-click="save(newBug)">
+    <input type="reset" value="Reset">
+</div>

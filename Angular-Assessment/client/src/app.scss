@@ -1,0 +1,27 @@
+// Module specific styles
+@import "common/common";
+/*@import "home/home";
+@import "dashboard/dashboard";*/
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+.bugsList{
+    list-style: none;
+}
+
+.bugsList div{
+    margin-top : 5px;
+    padding : 5px;
+    border : 2px solid black;
+    border-radius: 3px;
+    background-color: #eee;
+}
+.fieldContainer label{
+    display : block;
+}
+

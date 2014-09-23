@@ -22,6 +22,87 @@ app.all('*', function(req, res, next) {
 
 // load fixture data
 fixtures.loadAll();
+// projects
+app.get('/api/projects', function(req, res) {
+    res.status(200).json({
+        projects: repository.projects
+    });
+});
+
+app.get('/api/projects/:id', function(req, res) {
+    var project = repository.getProject(req.params.id);
+    res.status(200).json({
+        project: project
+    });
+});
+
+app.get('/api/projects/:id/bugs', function(req, res) {
+    console.log(req.params.id);
+    var bugs = repository.bugs.filter(function(bug){
+        return bug.projectId === parseInt(req.params.id)
+    });
+    res.status(200).json({
+        bugs: bugs
+    });
+});
+
+app.post('/api/projects', function(req, res) {
+    var newProject = repository.createProject(req.body.project);
+    
+    res.location('/api/projects/' + newProject.id);
+    res.status(201).json({
+      project: newProject
+    });
+});
+
+app.put('/api/projects/:id', function(req, res) {
+    repository.updateProject(req.params.id, req.body.project);
+    
+    res.status(204).end();
+});
+
+app.delete('/api/projects/:id', function(req, res) {
+    repository.deleteProject(req.params.id);
+  
+    res.status(204).end();
+});
+
+// bugs
+app.get('/api/bugs', function(req, res) {
+    res.status(200).json({
+        bugs: repository.bugs
+    });
+});
+
+app.get('/api/bugs/:id', function(req, res) {
+    var bug = repository.getBug(req.params.id);
+    res.status(200).json({
+        bug: bug
+    });
+});
+
+app.post('/api/bugs', function(req, res) {
+    var newBug = repository.createBug(req.body.bug);
+    
+    res.location('/api/bugs/' + newBug.id);
+    res.status(201).json({
+      bug: newBug
+    });
+});
+
+app.put('/api/bugs/:id', function(req, res) {
+    repository.updateBug(req.params.id, req.body.bug);
+    
+    res.status(204).end();
+});
+
+app.delete('/api/bugs/:id', function(req, res) {
+    repository.deleteBug(req.params.id);
+  
+    res.status(204).end();
+});
+
+
 
 // users
 app.get('/api/users', function(req, res) {

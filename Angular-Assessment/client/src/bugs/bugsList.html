@@ -1,0 +1,13 @@
+<h1>{{project.project.projectName}}</h1>
+
+<ul class="bugsList">
+    <li ng-repeat="bug in bugs">
+        <div>
+            <span style="float : right">{{bug.openDate | date}}</span>
+            <h3>{{bug.title}}</h3>
+            <p>{{bug.description}}</p>
+            
+            <input type="button" value="Close" ng-show="!bug.closeDate" ng-click="closeBug(bug)">
+        </div>
+    </li>
+</ul>
